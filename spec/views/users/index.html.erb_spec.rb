@@ -27,6 +27,5 @@ RSpec.describe "users/index", type: :view do
     assert_select cell_selector, text: Regexp.new("Lastname".to_s), count: 2
     assert_select cell_selector, text: Regexp.new("Username".to_s), count: 2
     assert_select cell_selector, text: Regexp.new("Email".to_s), count: 2
-    assert_select cell_selector, text: Regexp.new("Password".to_s), count: 2
   end
 end

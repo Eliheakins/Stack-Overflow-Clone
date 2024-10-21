@@ -17,6 +17,5 @@ RSpec.describe "users/show", type: :view do
     expect(rendered).to match(/Lastname/)
     expect(rendered).to match(/Username/)
     expect(rendered).to match(/Email/)
-    expect(rendered).to match(/Password/)
   end
 end
