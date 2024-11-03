@@ -1,0 +1,8 @@
+<% content_for :title, "Home" %>
+
+<h1>Home</h1>
+
+<div id="home">
+  <% button_to 'Posts', posts_path, method: :get %>
+  <% button_to 'Users', users_path, method: :get %>
+</div>
