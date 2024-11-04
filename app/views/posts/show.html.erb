@@ -6,6 +6,7 @@
   <h3>Replies</h3>
   <% @post.replies.order(:created_at).each do |reply| %>
     <%=render reply%>
+    <%= link_to "View this reply", reply %>
   <% end %>
 </section>
 <div>

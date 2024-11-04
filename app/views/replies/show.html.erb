@@ -4,7 +4,7 @@
 
 <div>
   <%= link_to "Edit this reply", edit_reply_path(@reply) %> |
-  <%= link_to "Back to replies", replies_path %>
+  <%= link_to "Back to post", Post.find(@reply.post_id) %>
 
   <%= button_to "Destroy this reply", @reply, method: :delete %>
 </div>
