@@ -66,3 +66,64 @@
 .custom-button:focus {
     outline: 2px solid #005bb5;
 }
+.post-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .post {
+    margin-bottom: 20px;
+  }
+  
+  .post h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .post-content {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .post-author {
+    font-size: 0.9em;
+    color: #888;
+  }
+  
+  .replies h3 {
+    font-size: 1.3em;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .replies {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+  }
+  
+  .reply {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #e3e3e3;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  .reply-content {
+    font-size: 1em;
+    color: #444;
+    margin-bottom: 5px;
+  }
+  
+  .reply-author {
+    font-size: 0.9em;
+    color: #666;
+    text-align: right;
+  }
+  
