@@ -5,10 +5,7 @@
 <section class="replies">
   <h3>Replies</h3>
   <% @post.replies.order(:created_at).each do |reply| %>
-    <div class="reply">
-      <p class="reply-content"><%= reply.text %></p>
-      <p class="reply-author">Replied by <%= reply.user.lastname %>, <%= reply.user.firstname %> on <%= reply.created_at.strftime("%B %d, %Y") %></p>
-    </div>
+    <%=render reply%>
   <% end %>
 </section>
 <div>
