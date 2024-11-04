@@ -12,7 +12,7 @@ class RepliesController < ApplicationController
 
   # GET /replies/new
   def new
-    @reply = Reply.new
+    @reply = Reply.new(:post_id= params[:post_id])
   end
 
   # GET /replies/1/edit
