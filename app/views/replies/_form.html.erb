@@ -10,19 +10,27 @@
       </ul>
     </div>
   <% end %>
-  <%=render @post%>
+  <%if @post%>
+    <%=render @post%>
+    <%= form.hidden_field :post_id, value: @post.id %>
+  <%else%>
+    <%=render @reply.post%>
+    <%= form.hidden_field :post_id, value: @reply.post_id %>
+  <%end%>
   <div>
     <%= form.label :text, style: "display: block" %>
     <%= form.text_field :text %>
   </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
+  <%if @reply.post_id%>
+     <%= form.hidden_field :user_id, value: @reply.user_id %>
+  <%else%>
+    <div>
+      <%= form.label :user_id, style: "display: block" %>
+      <%= form.text_field :user_id %>
+    </div>
+  <%end%>
 
   <%= form.hidden_field :votes, value: 0 %>
-  <%= form.hidden_field :post_id, value: @post.id %>
   <%= form.hidden_field :parent_reply_id, value: @parent_reply&.id %>
   <div>
     <%= form.submit %>

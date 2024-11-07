@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users
   resources :posts
   resources :posts do
-    resources :replies, only: [ :new, :create ]
+    resources :replies, only: [ :new, :create, :edit, :update ]
   end
   resources :tags
   resources :home, only: [ :show ]

@@ -1,6 +1,7 @@
 <div id="<%= dom_id reply %>">
     <div class="reply">
       <p class="reply-content"><%= reply.text %></p>
-      <p class="reply-author">Replied by <%= reply.user.lastname %>, <%= reply.user.firstname %> on <%= reply.created_at.strftime("%B %d, %Y") %></p>
+      <p class="reply-author">Replied by <%= reply.user.username %> on <%= reply.created_at.strftime("%B %d, %Y") %></p>
+      <p> Upvotes: <%=reply.votes%></p>
     </div>
 </div>

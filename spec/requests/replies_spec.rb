@@ -13,16 +13,40 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/replies", type: :request do
-  
   # This should return the minimal set of attributes required to create a valid
   # Reply. As you add validations to Reply, be sure to
   # adjust the attributes here as well.
+
+  let(:user) { User.create!() }
+  let(:post) { Post.create!(user: user) }
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      text: "MyString",
+      user_id: @user.id,
+      votes: 1,
+      post_id: @post.id
+    }
   }
+  let(:valid_attributes2) {
+    {
+      text: "MyString",
+      user_id: @user.id
+    }
+  }
+  before(:all) do
+    @user=User.create()
+    @post=Post.create(user: @user) # creates post necessary for reply to be created
+  end
+
+  after(:all) do
+    @user.destroy if @user.present?
+    @post.destroy if @post.present?
+  end
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      text: "MyString"
+    }
   }
 
   describe "GET /index" do
@@ -43,7 +67,7 @@ RSpec.describe "/replies", type: :request do
 
   describe "GET /new" do
     it "renders a successful response" do
-      get new_reply_url
+      get new_reply_url(@post)
       expect(response).to be_successful
     end
   end
@@ -60,12 +84,12 @@ RSpec.describe "/replies", type: :request do
     context "with valid parameters" do
       it "creates a new Reply" do
         expect {
-          post replies_url, params: { reply: valid_attributes }
+          post replies_url(@post), params: { reply: valid_attributes }
         }.to change(Reply, :count).by(1)
       end
 
       it "redirects to the created reply" do
-        post replies_url, params: { reply: valid_attributes }
+        post replies_url(@post), params: { reply: valid_attributes }
         expect(response).to redirect_to(reply_url(Reply.last))
       end
     end
