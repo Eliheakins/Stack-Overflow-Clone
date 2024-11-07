@@ -44,7 +44,7 @@ class RepliesController < ApplicationController
   def update
     respond_to do |format|
       if @reply.update(reply_params)
-        format.html { redirect_to @reply, notice: "Reply was successfully updated." }
+        format.html { redirect_to @reply.post, notice: "Reply was successfully updated." }
         format.json { render :show, status: :ok, location: @reply }
       else
         format.html { render :edit, status: :unprocessable_entity }

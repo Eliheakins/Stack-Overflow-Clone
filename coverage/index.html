@@ -13,7 +13,7 @@
       <img src="./assets/0.13.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-11-06T20:10:43-05:00">2024-11-06T20:10:43-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-11-06T20:27:08-05:00">2024-11-06T20:27:08-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -22,14 +22,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  96.23%
+  96.73%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.2
+         1.22
        </span>
     </span> hits/line
     )
@@ -42,11 +42,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>795</b> relevant lines,
-    <span class="green"><b>765</b> lines covered</span> and
-    <span class="red"><b>30</b> lines missed. </span>
+    <b>796</b> relevant lines,
+    <span class="green"><b>770</b> lines covered</span> and
+    <span class="red"><b>26</b> lines missed. </span>
     (<span class="green">
-  96.23%
+  96.73%
 </span>
 )
   </div>
@@ -98,7 +98,7 @@
             <td class="cell--number">37</td>
             <td class="cell--number">25</td>
             <td class="cell--number">12</td>
-            <td class="cell--number">0.97</td>
+            <td class="cell--number">1.35</td>
             
           </tr>
         
@@ -489,12 +489,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#d76c8242b4475ea4e84b51eb162a291492a17a84" class="src_link" title="spec/requests/replies_spec.rb">spec/requests/replies_spec.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">91.03 %</td>
-            <td class="cell--number">155</td>
-            <td class="cell--number">78</td>
-            <td class="cell--number">71</td>
-            <td class="cell--number">7</td>
-            <td class="cell--number">1.06</td>
+            <td class="green strong cell--number t-file__coverage">96.20 %</td>
+            <td class="cell--number">158</td>
+            <td class="cell--number">79</td>
+            <td class="cell--number">76</td>
+            <td class="cell--number">3</td>
+            <td class="cell--number">1.11</td>
             
           </tr>
         
@@ -2118,9 +2118,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="45">
+          <li class="covered" data-hits="3" data-linenumber="45">
             
-              <span class="hits">1</span>
+              <span class="hits">3</span>
             
 
             
@@ -2130,9 +2130,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="46">
+          <li class="covered" data-hits="3" data-linenumber="46">
             
-              <span class="hits">1</span>
+              <span class="hits">3</span>
             
 
             
@@ -2142,21 +2142,21 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="47">
+          <li class="covered" data-hits="6" data-linenumber="47">
             
-              <span class="hits">2</span>
-            
-
+              <span class="hits">6</span>
             
 
-            <code class="ruby">        format.html { redirect_to @reply, notice: &quot;Reply was successfully updated.&quot; }</code>
+            
+
+            <code class="ruby">        format.html { redirect_to @reply.post, notice: &quot;Reply was successfully updated.&quot; }</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="48">
+          <li class="covered" data-hits="3" data-linenumber="48">
             
-              <span class="hits">1</span>
+              <span class="hits">3</span>
             
 
             
@@ -2380,9 +2380,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="69">
+          <li class="covered" data-hits="7" data-linenumber="69">
             
-              <span class="hits">5</span>
+              <span class="hits">7</span>
             
 
             
@@ -2434,9 +2434,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="74">
+          <li class="covered" data-hits="3" data-linenumber="74">
             
-              <span class="hits">1</span>
+              <span class="hits">3</span>
             
 
             
@@ -11392,7 +11392,7 @@
     <h3>spec/requests/replies_spec.rb</h3>
     <h4>
       <span class="green">
-  91.03%
+  96.2%
 </span>
 
       lines covered
@@ -11401,9 +11401,9 @@
     
 
     <div class="t-line-summary">
-      <b>78</b> relevant lines.
-      <span class="green"><b>71</b> lines covered</span> and
-      <span class="red"><b>7</b> lines missed.</span>
+      <b>79</b> relevant lines.
+      <span class="green"><b>76</b> lines covered</span> and
+      <span class="red"><b>3</b> lines missed.</span>
     </div>
 
     
@@ -12411,7 +12411,7 @@
 
             
 
-            <code class="ruby">        post replies_url, params: { reply: valid_attributes }</code>
+            <code class="ruby">        post replies_url(@post), params: { reply: valid_attributes }</code>
           </li>
         </div>
       
@@ -12644,24 +12644,24 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="114">
+          <li class="never" data-hits="" data-linenumber="114">
+            
+
+            
+
+            <code class="ruby">        {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="115">
             
               <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">        skip(&quot;Add a hash of attributes valid for your model&quot;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="115">
-            
-
-            
-
-            <code class="ruby">      }</code>
+            <code class="ruby">          text: &quot;Test&quot;</code>
           </li>
         </div>
       
@@ -12671,31 +12671,27 @@
 
             
 
+            <code class="ruby">        }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="117">
+            
+
+            
+
+            <code class="ruby">      }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="118">
+            
+
+            
+
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="117">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      it &quot;updates the requested reply&quot; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="118">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        reply = Reply.create! valid_attributes</code>
           </li>
         </div>
       
@@ -12707,12 +12703,38 @@
 
             
 
+            <code class="ruby">      it &quot;updates the requested reply&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="120">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        reply = Reply.create! valid_attributes</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="121">
+            
+              <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">        patch reply_url(reply), params: { reply: new_attributes }</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="120">
+          <li class="covered" data-hits="1" data-linenumber="122">
+            
+              <span class="hits">1</span>
             
 
             
@@ -12722,32 +12744,14 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="121">
+          <li class="covered" data-hits="1" data-linenumber="123">
+            
+              <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        skip(&quot;Add assertions for updated state&quot;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="122">
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="123">
-            
-
-            
-
-            <code class="ruby"></code>
+            <code class="ruby">        expect(response).to redirect_to(@post)</code>
           </li>
         </div>
       
@@ -12759,12 +12763,44 @@
 
             
 
-            <code class="ruby">      it &quot;redirects to the reply&quot; do</code>
+            <code class="ruby">        expect(reply.text).to eq(&quot;Test&quot;)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="125">
+          <li class="never" data-hits="" data-linenumber="125">
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="126">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="127">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      it &quot;redirects to the post&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="128">
             
               <span class="hits">1</span>
             
@@ -12776,7 +12812,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="126">
+          <li class="covered" data-hits="1" data-linenumber="129">
             
               <span class="hits">1</span>
             
@@ -12788,7 +12824,9 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="127">
+          <li class="covered" data-hits="1" data-linenumber="130">
+            
+              <span class="hits">1</span>
             
 
             
@@ -12798,17 +12836,19 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="128">
+          <li class="covered" data-hits="1" data-linenumber="131">
+            
+              <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        expect(response).to redirect_to(reply_url(reply))</code>
+            <code class="ruby">        expect(response).to redirect_to(post_url(@post))</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="129">
+          <li class="never" data-hits="" data-linenumber="132">
             
 
             
@@ -12818,7 +12858,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="130">
+          <li class="never" data-hits="" data-linenumber="133">
             
 
             
@@ -12828,48 +12868,12 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="131">
+          <li class="never" data-hits="" data-linenumber="134">
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="132">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    context &quot;with invalid parameters&quot; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="133">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      it &quot;renders a response with 422 status (i.e. to display the &#39;edit&#39; template)&quot; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="134">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        reply = Reply.create! valid_attributes</code>
           </li>
         </div>
       
@@ -12881,7 +12885,7 @@
 
             
 
-            <code class="ruby">        patch reply_url(reply), params: { reply: invalid_attributes }</code>
+            <code class="ruby">    context &quot;with invalid parameters&quot; do</code>
           </li>
         </div>
       
@@ -12893,37 +12897,43 @@
 
             
 
+            <code class="ruby">      it &quot;renders a response with 422 status (i.e. to display the &#39;edit&#39; template)&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="137">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        reply = Reply.create! valid_attributes</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="138">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        patch reply_url(reply), params: { reply: invalid_attributes }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="139">
+            
+              <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">        expect(response).to have_http_status(:unprocessable_entity)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="137">
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="138">
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="139">
-            
-
-            
-
-            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -12933,43 +12943,37 @@
 
             
 
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="141">
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="142">
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="143">
+            
+
+            
+
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="141">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  describe &quot;DELETE /destroy&quot; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="142">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    it &quot;destroys the requested reply&quot; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="143">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      reply = Reply.create! valid_attributes</code>
           </li>
         </div>
       
@@ -12981,7 +12985,7 @@
 
             
 
-            <code class="ruby">      expect {</code>
+            <code class="ruby">  describe &quot;DELETE /destroy&quot; do</code>
           </li>
         </div>
       
@@ -12993,54 +12997,12 @@
 
             
 
-            <code class="ruby">        delete reply_url(reply)</code>
+            <code class="ruby">    it &quot;destroys the requested reply&quot; do</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="146">
-            
-
-            
-
-            <code class="ruby">      }.to change(Reply, :count).by(-1)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="147">
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="148">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="149">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    it &quot;redirects to the replies list&quot; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="150">
+          <li class="covered" data-hits="1" data-linenumber="146">
             
               <span class="hits">1</span>
             
@@ -13052,14 +13014,56 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="151">
+          <li class="covered" data-hits="1" data-linenumber="147">
             
               <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">      delete reply_url(reply)</code>
+            <code class="ruby">      expect {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="148">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        delete reply_url(reply)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="149">
+            
+
+            
+
+            <code class="ruby">      }.to change(Reply, :count).by(-1)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="150">
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="151">
+            
+
+            
+
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -13071,12 +13075,48 @@
 
             
 
+            <code class="ruby">    it &quot;redirects to the replies list&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="153">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      reply = Reply.create! valid_attributes</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="154">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      delete reply_url(reply)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="155">
+            
+              <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">      expect(response).to redirect_to(replies_url)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="153">
+          <li class="never" data-hits="" data-linenumber="156">
             
 
             
@@ -13086,7 +13126,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="154">
+          <li class="never" data-hits="" data-linenumber="157">
             
 
             
@@ -13096,7 +13136,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="155">
+          <li class="never" data-hits="" data-linenumber="158">
             
 
             

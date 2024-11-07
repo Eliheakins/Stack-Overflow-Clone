@@ -111,21 +111,24 @@ RSpec.describe "/replies", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          text: "Test"
+        }
       }
 
       it "updates the requested reply" do
         reply = Reply.create! valid_attributes
         patch reply_url(reply), params: { reply: new_attributes }
         reply.reload
-        skip("Add assertions for updated state")
+        expect(response).to redirect_to(@post)
+        expect(reply.text).to eq("Test")
       end
 
-      it "redirects to the reply" do
+      it "redirects to the post" do
         reply = Reply.create! valid_attributes
         patch reply_url(reply), params: { reply: new_attributes }
         reply.reload
-        expect(response).to redirect_to(reply_url(reply))
+        expect(response).to redirect_to(post_url(@post))
       end
     end
 
