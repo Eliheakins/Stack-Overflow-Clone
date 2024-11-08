@@ -21,13 +21,13 @@
     <%= form.label :text, style: "display: block" %>
     <%= form.text_field :text %>
   </div>
-  <%if @reply.post_id%>
-     <%= form.hidden_field :user_id, value: @reply.user_id %>
-  <%else%>
+  <%if @reply.user_id.nil?%> 
     <div>
       <%= form.label :user_id, style: "display: block" %>
       <%= form.text_field :user_id %>
     </div>
+  <%else%>
+    <%= form.hidden_field :user_id, value: @reply.user_id %>
   <%end%>
 
   <%= form.hidden_field :votes, value: 0 %>

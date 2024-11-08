@@ -84,12 +84,12 @@ RSpec.describe "/replies", type: :request do
     context "with valid parameters" do
       it "creates a new Reply" do
         expect {
-          post replies_url(@post), params: { reply: valid_attributes }
+          post replies_url, params: { reply: valid_attributes }
         }.to change(Reply, :count).by(1)
       end
 
       it "redirects to the created reply" do
-        post replies_url(@post), params: { reply: valid_attributes }
+        post replies_url, params: { reply: valid_attributes }
         expect(response).to redirect_to(reply_url(Reply.last))
       end
     end
