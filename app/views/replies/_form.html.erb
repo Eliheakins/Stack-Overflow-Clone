@@ -20,15 +20,8 @@
   <div>
     <%= form.label :text, style: "display: block" %>
     <%= form.text_field :text %>
-  </div>
-  <%if @reply.user_id.nil?%> 
-    <div>
-      <%= form.label :user_id, style: "display: block" %>
-      <%= form.text_field :user_id %>
-    </div>
-  <%else%>
-    <%= form.hidden_field :user_id, value: @reply.user_id %>
-  <%end%>
+  </div> 
+  <%= form.hidden_field :user_id, value: current_user.id %>
 
   <%= form.hidden_field :votes, value: 0 %>
   <%= form.hidden_field :parent_reply_id, value: @parent_reply&.id %>
