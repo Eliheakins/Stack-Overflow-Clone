@@ -2,7 +2,7 @@
 <html>
   <head>
     <title><%= content_for(:title) || "Stack Overflow Clone" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -20,6 +20,31 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <a class="navbar-brand" href="#">StackOverflowClone</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <%= link_to "Home", root_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Users', users_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Posts", posts_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Tags", tags_path, class: "nav-link" %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container mt-5 pt-5">
+      <%= yield %>
+    </div>
   </body>
 </html>
