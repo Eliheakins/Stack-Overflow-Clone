@@ -34,3 +34,12 @@
     </div>
   <% else %>
     <%= form.hidden_field :user_id, value: @reply.user_id %>
+  <% end %>
+
+  <%= form.hidden_field :votes, value: 0 %>
+  <%= form.hidden_field :parent_reply_id, value: @parent_reply&.id %>
+
+  <div class="form-group text-center">
+    <%= form.submit "Submit Reply", class: "btn btn-primary" %>
+  </div>
+<% end %>
