@@ -1,6 +1,7 @@
 class RepliesController < ApplicationController
   before_action :set_reply, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, only: %i[ new create edit update destroy ]
+  before_action :authenticate_user!, only: %i[ new create ]
+  before_action :check_user_match, only: %i[ edit update destroy ]
 
   # GET /replies or /replies.json
   def index

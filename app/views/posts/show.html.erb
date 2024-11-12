@@ -2,9 +2,13 @@
 
 <%= render @post %>
 <div class="button-row">
-  <%= link_to "Edit this post", edit_post_path(@post), class: "button edit-button" %>
+  <% if @post.check_user_authorized(current_user) %>
+    <%= link_to "Edit this post", edit_post_path(@post), class: "button edit-button" %>
+  <% end %>
   <%= link_to "Back to posts", posts_path, class: "button back-button" %>
-  <%= button_to "Destroy this post", @post, method: :delete, class: "button delete-button"%>
+  <% if @post.check_user_authorized(current_user) %>
+    <%= button_to "Destroy this post", @post, method: :delete, class: "button delete-button"%>
+  <% end %>
 </div>
 <section class="replies">
   <h3>Replies</h3>
@@ -12,7 +16,9 @@
     <%=render reply%>
     <div class="button-row">
       <%= link_to "View this reply", reply, class: "view-reply-button" %>
-      <%= link_to "Edit this reply", edit_reply_path(reply), class: "button edit-button"%>
+      <% if reply.check_user_authorized(current_user) %>
+        <%= link_to "Edit this reply", edit_reply_path(reply), class: "button edit-button"%>
+      <% end %>
     </div>
   <% end %>
 </section>

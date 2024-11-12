@@ -3,8 +3,12 @@
 <%= render @reply %>
 
 <div class="button-row">
-  <%= link_to "Edit this reply", edit_reply_path(@reply), class: "button edit-button" %> |
+  <% if @reply.check_user_authorized(current_user) %>
+    <%= link_to "Edit this reply", edit_reply_path(@reply), class: "button edit-button" %>
+  <% end %>
   <%= link_to "Back to post", Post.find(@reply.post_id), class: "button back-button"  %>
 
-  <%= button_to "Destroy this reply", @reply, method: :delete, class: "button delete-button" %>
+  <% if @reply.check_user_authorized(current_user) %>
+    <%= button_to "Destroy this reply", @reply, method: :delete, class: "button delete-button" %>
+  <% end %>
 </div>
