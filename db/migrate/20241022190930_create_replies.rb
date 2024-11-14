@@ -5,6 +5,7 @@ class CreateReplies < ActiveRecord::Migration[7.2]
       t.integer :votes
       t.references :post, null: false, foreign_key: true
       t.references :reply, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: :true
 
       t.timestamps
     end

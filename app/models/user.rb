@@ -4,4 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   enum :role, %i[admin student instructor]
+  has_many :posts, dependent: :destroy
+  has_many :replies, dependent: :destroy
 end
