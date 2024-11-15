@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "replies/show", type: :view do
-  let(:user) { User.create!(username: "joeschmoe") }
+  let(:user) { create(:user, :username => 'joeshmoe') }
   let(:post) { Post.create!(user_id: user.id) }
   before(:each) do
     assign(:reply, Reply.create!(

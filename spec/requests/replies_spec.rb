@@ -17,7 +17,7 @@ RSpec.describe "/replies", type: :request do
   # Reply. As you add validations to Reply, be sure to
   # adjust the attributes here as well.
 
-  let(:user_instance) { User.create!() }
+  let(:user_instance) { create(:user) }
   let(:post_instance) { Post.create!(user: user_instance) }
 
   let(:valid_attributes) {
@@ -36,7 +36,7 @@ RSpec.describe "/replies", type: :request do
   }
 
   before(:all) do
-    @user=User.create()
+    @user=create(:user)
     @post=Post.create(user: @user) # creates post necessary for reply to be created
   end
 

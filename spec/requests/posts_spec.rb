@@ -34,7 +34,7 @@ RSpec.describe "/posts", type: :request do
     }
   }
   before(:all) do
-    @user=User.create() # creates user necessary for post to be created
+    @user=create(:user) # creates user necessary for post to be created
   end
 
   after(:all) do
