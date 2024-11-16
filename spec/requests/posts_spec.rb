@@ -16,6 +16,8 @@ RSpec.describe "/posts", type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Post. As you add validations to Post, be sure to
   # adjust the attributes here as well.
+  include Devise::Test::IntegrationHelpers
+
   let(:valid_attributes) {
     {
       title: "Test",
@@ -35,6 +37,10 @@ RSpec.describe "/posts", type: :request do
   }
   before(:all) do
     @user=create(:user) # creates user necessary for post to be created
+  end
+
+  before(:each) do
+    sign_in @user
   end
 
   after(:all) do
