@@ -94,7 +94,7 @@ RSpec.describe "/replies", type: :request do
 
       it "redirects to the created reply" do
         post post_replies_path(@post), params: { reply: valid_attributes }
-        expect(response).to redirect_to(reply_url(Reply.last))
+        expect(response).to redirect_to(post_url(@post))
       end
     end
 
