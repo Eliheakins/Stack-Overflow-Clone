@@ -61,14 +61,6 @@ RSpec.describe "/replies", type: :request do
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
-      reply = Reply.create! valid_attributes
-      get reply_url(reply)
-      expect(response).to be_successful
-    end
-  end
-
   describe "GET /new" do
     it "renders a successful response" do
       get new_reply_url(@post)

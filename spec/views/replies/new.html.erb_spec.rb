@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "replies/new", type: :view do
+  include Devise::Test::IntegrationHelpers
+  include Devise::Test::ControllerHelpers
   before(:all) do
     @user=create(:user)
     @post=Post.create(user: @user) # creates post necessary for reply to be created
@@ -18,6 +20,7 @@ RSpec.describe "replies/new", type: :view do
       votes: 1,
       post: @post
     ))
+    sign_in @user
   end
 
   it "renders new reply form" do

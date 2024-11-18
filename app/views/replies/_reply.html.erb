@@ -7,6 +7,19 @@
       </p>
       <div class="d-flex justify-content-between align-items-center">
         <p class="mb-0">Upvotes: <%= reply.votes %></p>
+        <p class="mb-0">
+          <%= link_to "Reply", new_reply_path(@post), class: "btn btn-success" %>
+        </p>
+        <p class="mb-0">
+          <% if reply.check_user_authorized(current_user) %>
+            <%= link_to "Edit this reply", edit_reply_path(reply), class: "btn btn-warning" %>
+          <% end %>
+        </p>
+        <p class="mb-0">
+          <% if reply.check_user_authorized(current_user) %>
+            <%= button_to "Destroy this reply", @reply, method: :delete, class: "btn btn-danger btn-sm" %>
+          <% end %>
+        </p>
       </div>
     </div>
   </div>

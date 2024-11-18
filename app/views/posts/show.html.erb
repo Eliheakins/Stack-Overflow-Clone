@@ -20,13 +20,6 @@
   <h3>Replies</h3>
   <% @post.replies.order(:created_at).each do |reply| %>
     <%= render reply %>
-
-    <div class="button-row mb-4">
-      <%= link_to "View this reply", reply, class: "btn btn-info" %>
-      <% if reply.check_user_authorized(current_user) %>
-        <%= link_to "Edit this reply", edit_reply_path(reply), class: "btn btn-warning" %>
-      <% end %>
-    </div>
   <% end %>
 </section>
 

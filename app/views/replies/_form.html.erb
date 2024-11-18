@@ -28,14 +28,7 @@
     <%= form.text_field :text, class: "form-control" %>
   </div>
 
-  <% if @reply.user_id.nil? %> 
-    <div class="form-group">
-      <%= form.label :user_id, class: "form-label" %>
-      <%= form.text_field :user_id, class: "form-control" %>
-    </div>
-  <%else%>
-    <%= form.hidden_field :user_id, value: @reply.user_id || user.id %>
-  <%end%>
+  <%= form.hidden_field :user_id, value: current_user.id %>
 
   <%= form.hidden_field :votes, value: 0 %>
   <%= form.hidden_field :parent_reply_id, value: @parent_reply&.id %>

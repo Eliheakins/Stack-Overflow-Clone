@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users
-  resources :replies
   resources :posts
   resources :posts do
-    resources :replies, only: [ :new, :create, :edit, :update ]
+    resources :replies, only: [ :new, :create, :edit, :update, :destroy ]
+  end
+  resources :replies do
+    resources :replies, only: [ :new, :create, :edit, :update, :destroy ]
   end
   resources :tags
   resources :home, only: [ :show ]

@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "replies/edit", type: :view do
+  include Devise::Test::IntegrationHelpers
+  include Devise::Test::ControllerHelpers
   let!(:user) { create(:user) }
   let!(:post) { Post.create!(user: user) }
 
@@ -16,6 +18,7 @@ RSpec.describe "replies/edit", type: :view do
   before(:each) do
     assign(:reply, reply)
     assign(:post, post)
+    sign_in user
   end
 
   it "renders the edit reply form" do
