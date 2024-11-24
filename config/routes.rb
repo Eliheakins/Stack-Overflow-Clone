@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users
+  resources :users, only: %i[show index edit update destroy]  
   resources :replies
   resources :posts
-  resources :posts do
-    resources :replies, only: [ :new, :create, :edit, :update ]
-  end
   resources :tags
   resources :home, only: [ :show ]
+  resources :posts do
+    resources :replies, only: %i[new create edit update] do
+      member do
+        post 'upvote'
+        post 'downvote'
+      end
+    end
+  end
+  
+  resources :replies, only: %i[destroy]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
