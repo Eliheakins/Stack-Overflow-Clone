@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_04_210247) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_24_223727) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -42,7 +42,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_210247) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "text"
-    t.integer "votes"
     t.integer "user_id", null: false
     t.integer "tag_id"
     t.datetime "created_at", null: false
@@ -53,12 +52,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_210247) do
 
   create_table "replies", force: :cascade do |t|
     t.string "text"
-    t.integer "votes"
     t.integer "post_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "parent_reply_id"
+    t.text "content"
     t.index ["post_id"], name: "index_replies_on_post_id"
     t.index ["user_id"], name: "index_replies_on_user_id"
   end
@@ -87,10 +86,22 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_210247) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "votable_type", null: false
+    t.integer "votable_id", null: false
+    t.integer "value", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_votes_on_user_id"
+    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "posts", "tags"
   add_foreign_key "posts", "users"
   add_foreign_key "replies", "posts"
   add_foreign_key "replies", "users"
+  add_foreign_key "votes", "users"
 end

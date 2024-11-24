@@ -72,6 +72,37 @@ class RepliesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def reply_params
-      params.require(:reply).permit(:text, :user_id, :votes, :post_id, :parent_reply_id)
+      params.require(:reply).permit(:text, :user_id, :post_id, :parent_reply_id)
+    end
+    def upvote
+      vote = @reply.votes.find_or_initialize_by(user: current_user)
+  
+      if vote.new_record? || vote.value != 1
+        vote.update(value: 1)
+        flash[:notice] = "You upvoted the reply."
+      else
+        flash[:alert] = "You've already upvoted this reply."
+      end
+  
+      redirect_to post_path(@reply.post)
+    end
+  
+    def downvote
+      vote = @reply.votes.find_or_initialize_by(user: current_user)
+  
+      if vote.new_record? || vote.value != -1
+        vote.update(value: -1)
+        flash[:notice] = "You downvoted the reply."
+      else
+        flash[:alert] = "You've already downvoted this reply."
+      end
+  
+      redirect_to post_path(@reply.post)
+    end
+  
+    private
+  
+    def set_reply
+      @reply = Reply.find(params[:id])
     end
 end

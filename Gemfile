@@ -45,10 +45,12 @@ group :development, :test do
   gem "rspec-rails"
   gem "capybara"
   gem "factory_bot_rails"
+  gem 'faker'
 end
 
 group :test do
   gem "cucumber-rails", require: false
+  gem 'database_cleaner-active_record'
   # database_cleaner is not required, but highly recommended
   gem "database_cleaner"
 end
