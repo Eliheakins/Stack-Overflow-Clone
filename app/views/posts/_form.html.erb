@@ -40,7 +40,11 @@
 
         <div class="d-flex justify-content-between">
           <%= form.submit "Save Post", class: "btn btn-primary" %>
-          <%= link_to "Cancel", post_path(post), class: "btn btn-secondary" %>
+          <%if post.id%>
+            <%= link_to "Cancel", post_path(post), class: "btn btn-secondary" %>
+          <%else%>
+            <%= link_to "Cancel", posts_path, class: "btn btn-secondary" %>
+          <%end%>
         </div>
       <% end %>
     </div>

@@ -62,13 +62,14 @@ class RepliesController < ApplicationController
   # DELETE /replies/1 or /replies/1.json
   def destroy
     @reply = Reply.find(params[:id])
+    @post = @reply.post
     @reply.destroy
 
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: turbo_stream.remove(@reply)
       end
-      format.html { redirect_to posts_path, notice: "Reply was successfully deleted." }
+      format.html { redirect_to post_path(@post), notice: "Reply was successfully deleted." }
     end
   end
 
