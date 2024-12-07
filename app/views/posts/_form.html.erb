@@ -1,8 +1,9 @@
-<turbo-frame id="post_edit_<%= @post.id %>" class="mt-4">
+<% if post.persisted? %>
+  <turbo-frame id="post_edit_<%= @post.id %>" class="mt-4">
+<% else %>
+  <div class="mt-4">
+<% end %>
   <div class="card shadow-sm">
-    <div class="card-header bg-primary text-white">
-      <h5 class="mb-0">Edit Post</h5>
-    </div>
     <div class="card-body">
       <%= form_with(model: post) do |form| %>
         <% if post.errors.any? %>
@@ -40,13 +41,15 @@
 
         <div class="d-flex justify-content-between">
           <%= form.submit "Save Post", class: "btn btn-primary" %>
-          <%if post.id%>
+          <% if post.persisted? %>
             <%= link_to "Cancel", post_path(post), class: "btn btn-secondary" %>
-          <%else%>
+          <% else %>
             <%= link_to "Cancel", posts_path, class: "btn btn-secondary" %>
-          <%end%>
+          <% end %>
         </div>
       <% end %>
     </div>
   </div>
-</turbo-frame>
+<% if post.persisted? %>
+  </turbo-frame>
+<% end %>

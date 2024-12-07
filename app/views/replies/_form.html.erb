@@ -1,4 +1,8 @@
-<turbo-frame id="reply_edit_<%= @reply.id %>" class="mt-4">
+<% if reply.persisted? %>
+  <turbo-frame id="reply_edit_<%= @reply.id %>" class="mt-4">
+<% else %>
+  <div class="mt-4">
+<% end %>
   <%= form_with(model: [@post, @reply], local: true) do |form| %>
     <% if reply.errors.any? %>
       <div class="alert alert-danger">
@@ -30,4 +34,6 @@
       <%= form.submit "Submit Reply", class: "btn btn-primary" %>
     </div>
   <% end %>
-</turbo-frame>
+  <% if reply.persisted? %>
+  </turbo-frame>
+  <%end%>
