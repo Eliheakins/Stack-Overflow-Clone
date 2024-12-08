@@ -37,7 +37,6 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
-    debugger()
     @post.tags = form_tags
     respond_to do |format|
       if @post.update(post_params)
@@ -72,6 +71,7 @@ class PostsController < ApplicationController
     end
 
     def form_tags 
+      return [] if params[:post][:tag_id].nil?
       tag_ids = params[:post][:tag_id]
       tag_ids.delete("")
       tag_ids.delete("1") 

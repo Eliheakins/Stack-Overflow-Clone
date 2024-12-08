@@ -6,7 +6,7 @@
         <p class="card-text"><%= post.text %></p>
         <% if !post.tags.nil? %>
         <% post.tags.each do |tag| %>
-          <div class= "badge badge-pill badge-info"> <%= link_to tag.name,tag %> </div>
+          <div class= "badge badge-pill badge-info"> <%= link_to "#{tag.name}",tag %> </div>
         <% end %>
         <br>
         <% end %>
