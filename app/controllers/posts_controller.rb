@@ -23,7 +23,7 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
-
+    @post.tags = form_tags
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: "Post was successfully created." }
@@ -37,6 +37,7 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
+    @post.tags = form_tags
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to @post, notice: "Post was successfully updated." }
@@ -66,6 +67,13 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :text, :user_id, :tag_id, :votes)
+      params.require(:post).permit(:title, :text, :user_id, :votes)
     end
+
+    def form_tags 
+      tag_ids = params[:post][:tag_id]
+      tag_ids.delete("")
+      tag_ids.delete("1") 
+      tags = Tag.where('id = ?',tag_ids)
+    end 
 end
