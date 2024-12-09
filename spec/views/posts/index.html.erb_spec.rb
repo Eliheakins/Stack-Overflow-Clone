@@ -29,3 +29,28 @@ RSpec.describe "posts/index", type: :view do
     assert_select cell_selector, text: "View this post", count: 2
   end
 end
+
+RSpec.describe "posts/index.html.erb", type: :view do
+  let!(:tag1) { create(:tag, name: "Technology") }
+  let!(:tag2) { create(:tag, name: "Education") }
+  let!(:post1) { create(:post, title: "Tech Post", text: "Content about technology", tag: tag1) }
+  let!(:post2) { create(:post, title: "Education Post", text: "Content about education", tag: tag2) }
+
+  it "renders the form with the tag selection dropdown" do
+    assign(:posts, [post1, post2])
+    render
+
+    expect(rendered).to have_selector('form')
+    expect(rendered).to have_button('Toggle Tag Selection')
+    expect(rendered).to have_selector('.form-check', count: 2)
+  end
+
+  it "displays the posts with the correct title and content" do
+    assign(:posts, [post1, post2])
+    render
+
+    expect(rendered).to include(post1.title)
+    expect(rendered).to include(post2.title)
+  end
+end
+
