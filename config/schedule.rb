@@ -5,7 +5,9 @@
 
 # Example:
 #
-set :output, {:error => “log/cron_error_log.log”, :standard => “log/cron_log.log”}
+set :environment, "development"
+set :output, {:error => "log/cron_error_log.log", :standard => "log/cron_log.log"}
+
 every 1.minutes do
   runner "Post.trigger_sort_job"
 end

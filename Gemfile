@@ -70,3 +70,5 @@ gem "aws-sdk-s3", "~> 1.172", require: false
 gem "rails-controller-testing"
 
 gem "whenever", "~> 1.0"
+
+gem "sidekiq-cron", "~> 2.0"
