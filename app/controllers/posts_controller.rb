@@ -76,9 +76,8 @@ class PostsController < ApplicationController
     end
 
     def form_tags 
-      return [] if params[:post][:tag_id].nil?
-      tag_ids = params[:post][:tag_id]
-      tag_ids.delete("")
+      return [] if params[:tag_ids].nil?
+      tag_ids = params[:tag_ids]
       tag_ids.delete("1") 
       tags = Tag.where(id: tag_ids)
     end 
