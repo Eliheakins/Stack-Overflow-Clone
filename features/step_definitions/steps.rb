@@ -15,7 +15,7 @@ Given('I am logged in') do
     fill_in 'Password', with: 'password'
     page.find_by_id('Log in').click
 end
-  
+
 Given('I go to create a post') do
     visit new_post_path
 end
@@ -58,12 +58,3 @@ end
 When('I look at the {string} page') do |tag|
     visit tag_path(Tag.find_by(name: tag))
 end
-
-  
-
-
- 
- 
-  
-
-  
