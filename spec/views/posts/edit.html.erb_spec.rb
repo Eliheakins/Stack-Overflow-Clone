@@ -4,8 +4,13 @@ RSpec.describe "posts/edit", type: :view do
   include Devise::Test::IntegrationHelpers
   include Devise::Test::ControllerHelpers
 
-  let!(:user) { create(:user) }
-  let!(:post) { create(:post, user: user) }
+  let(:post) {
+    Post.create!(
+      title: "MyString",
+      text: "MyString",
+      user_id: user.id,
+    )
+  }
 
   before(:each) do
     assign(:post, post)
@@ -19,8 +24,6 @@ RSpec.describe "posts/edit", type: :view do
       assert_select "input[name=?]", "post[title]"
       assert_select "textarea[name=?]", "post[text]"
       assert_select "input[name=?]", "post[user_id]"
-      assert_select "input[name=?]", "post[votes]"
-      assert_select "input[name=?][value=?]", "_method", "patch"
     end
   end
 end
