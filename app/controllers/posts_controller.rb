@@ -4,7 +4,13 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    if (params[:query].nil? || params[:query].blank?) && (params[:tag_ids].nil? || params[:tag_ids].empty?)
+      @posts = Post.all
+    else
+      query = params[:query].to_s
+      tag_ids = Array(params[:tag_ids]).reject(&:blank?).map(&:to_i)
+      @posts = Post.search_by_query(query, tag_ids)
+    end
   end
 
   # GET /posts/1 or /posts/1.json
