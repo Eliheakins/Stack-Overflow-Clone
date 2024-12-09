@@ -37,7 +37,7 @@ RSpec.describe "posts/index.html.erb", type: :view do
   let!(:post2) { create(:post, title: "Education Post", text: "Content about education", tag: tag2) }
 
   it "renders the form with the tag selection dropdown" do
-    assign(:posts, [post1, post2])
+    assign(:posts, [ post1, post2 ])
     render
 
     expect(rendered).to have_selector('form')
@@ -46,11 +46,10 @@ RSpec.describe "posts/index.html.erb", type: :view do
   end
 
   it "displays the posts with the correct title and content" do
-    assign(:posts, [post1, post2])
+    assign(:posts, [ post1, post2 ])
     render
 
     expect(rendered).to include(post1.title)
     expect(rendered).to include(post2.title)
   end
 end
-

@@ -10,7 +10,7 @@ RSpec.describe PostsController, type: :controller do
     context "when no query or tags are provided" do
       it "returns all posts" do
         get :index
-        expect(assigns(:posts)).to match_array([post1, post2])
+        expect(assigns(:posts)).to match_array([ post1, post2 ])
       end
     end
 
@@ -24,7 +24,7 @@ RSpec.describe PostsController, type: :controller do
 
     context "when tag IDs are provided" do
       it "returns posts matching the selected tags" do
-        get :index, params: { tag_ids: [tag1.id] }
+        get :index, params: { tag_ids: [ tag1.id ] }
         expect(assigns(:posts)).to include(post1)
         expect(assigns(:posts)).to_not include(post2)
       end
@@ -32,7 +32,7 @@ RSpec.describe PostsController, type: :controller do
 
     context "when a query and tag IDs are provided" do
       it "returns posts matching both the query and tags" do
-        get :index, params: { query: 'Post', tag_ids: [tag1.id] }
+        get :index, params: { query: 'Post', tag_ids: [ tag1.id ] }
         expect(assigns(:posts)).to include(post1)
         expect(assigns(:posts)).to_not include(post2)
       end
