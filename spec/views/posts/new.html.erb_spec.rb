@@ -11,7 +11,6 @@ RSpec.describe "posts/new", type: :view do
       title: "MyString",
       text: "MyString",
       user_id: user,
-      votes: 1
     ))
     sign_in user
   end
@@ -26,7 +25,6 @@ RSpec.describe "posts/new", type: :view do
 
       assert_select "input[name=?]", "post[user_id]"
 
-      assert_select "input[name=?]", "post[votes]"
     end
   end
 end

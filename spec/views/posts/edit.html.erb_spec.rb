@@ -10,7 +10,6 @@ RSpec.describe "posts/edit", type: :view do
       title: "MyString",
       text: "MyString",
       user_id: user.id,
-      votes: 1
     )
   }
 
@@ -29,7 +28,6 @@ RSpec.describe "posts/edit", type: :view do
 
       assert_select "input[name=?]", "post[user_id]"
 
-      assert_select "input[name=?]", "post[votes]"
     end
   end
 end
