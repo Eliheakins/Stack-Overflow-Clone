@@ -1,39 +1,46 @@
 class VotesController < ApplicationController
-    before_action :authenticate_user! 
-  
-    def create
-        @post = Post.find(params[:post_id])
-        @vote = @post.votes.find_or_initialize_by(user: current_user)
-        
-        if @vote.new_record? || @vote.vote_type != vote_params[:vote_type]
-          @vote.vote_type = vote_params[:vote_type]
-          if @vote.save
-            redirect_to @post, notice: 'Your vote has been cast.'
-          else
-            redirect_to @post, alert: 'An error occurred while casting your vote.'
-          end
-        else
-          redirect_to @post, alert: 'You have already voted on this post.'
-        end
-    end
-      
-  
-    def destroy
-      @post = Post.find(params[:post_id])
-      @vote = @post.votes.find_by(user: current_user)
-  
-      if @vote
-        @vote.destroy
-        redirect_to @post, notice: 'Your vote has been removed.'
+  before_action :authenticate_user!
+  before_action :set_votable
+
+  def create
+    @vote = @votable.votes.find_or_initialize_by(user: current_user)
+
+    if @vote.new_record? || @vote.vote_type != vote_params[:vote_type]
+      @vote.vote_type = vote_params[:vote_type]
+      if @vote.save
+        redirect_to @votable, notice: 'Your vote has been cast.'
       else
-        redirect_to @post, alert: 'You haven’t voted on this post.'
+        redirect_to @votable, alert: 'An error occurred while casting your vote.'
       end
-    end
-  
-    private
-  
-    def vote_params
-      params.require(:vote).permit(:vote_type)
+    else
+      redirect_to @votable, alert: 'You have already voted.'
     end
   end
-  
+
+  def destroy
+    @vote = @votable.votes.find_by(user: current_user)
+
+    if @vote
+      @vote.destroy
+      redirect_to @votable, notice: 'Your vote has been removed.'
+    else
+      redirect_to @votable, alert: 'You haven’t voted.'
+    end
+  end
+
+  private
+
+  def set_votable
+    if params[:reply_id]
+      @votable = Reply.find(params[:reply_id])
+    elsif params[:post_id]
+      @votable = Post.find(params[:post_id])
+    else
+      raise ActiveRecord::RecordNotFound, "Votable not found"
+    end
+  end
+
+  def vote_params
+    params.require(:vote).permit(:vote_type)
+  end
+end

@@ -26,7 +26,7 @@
 
 <section class="replies mt-5">
   <h3>Replies</h3>
-  <% @post.replies.order(votes: :desc).each do |reply| %>
+  <% @post.replies.sort_by { |reply| reply.votes.up.count - reply.votes.down.count }.reverse.each do |reply| %>
     <%= render reply %>
   <% end %>
 </section>
