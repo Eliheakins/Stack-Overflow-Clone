@@ -4,11 +4,18 @@ RSpec.describe "posts/edit", type: :view do
   include Devise::Test::IntegrationHelpers
   include Devise::Test::ControllerHelpers
 
+  let(:user) {
+    User.create!(
+      email: "test@example.com",
+      password: "password"
+    )
+  }
+
   let(:post) {
     Post.create!(
       title: "MyString",
       text: "MyString",
-      user_id: user.id,
+      user_id: user.id
     )
   }
 
