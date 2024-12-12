@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
   put '/user_creds/:id/approve', to: 'user_creds#approve', as: 'user_cred_approve'
   delete '/users/:id', to: 'user_creds#delete', as: 'user_cred'
+  get '/user_creds/moderate', to:'user_creds#moderate', as: 'user_creds'
   resources :replies
   resources :posts
   resources :posts do
