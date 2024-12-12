@@ -1,4 +1,4 @@
-<%= form_with(model: user_cred) do |form| %>
+_<%= form_with(model: user_cred, url: user_user_creds_path) do |form| %>
     <% if user_cred.errors.any? %>
       <div style="color: red">
         <h2><%= pluralize(tag.errors.count, "error") %> prohibited this user credential request from being saved:</h2>
@@ -28,7 +28,8 @@
     </div>
   
     <div>
-    <%= form.submit %>
+
+    <%= form.submit "Submit Credentials" %>
     </div>
   
   </div>
