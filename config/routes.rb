@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   devise_for :users
   resources :users, only: [ :show, :edit, :update, :index ] do
-    resources :user_creds, only[ :new, :create]
+    resources :user_creds, only: [ :new, :create]
   end
   put '/user_creds/:id/approve', to: 'user_creds#approve', as: 'user_cred_approve'
   delete '/users/:id', to: 'user_creds#delete', as: 'user_cred'
