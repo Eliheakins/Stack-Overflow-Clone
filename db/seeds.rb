@@ -77,3 +77,76 @@
   Reply.create!(post: @post4, text: "You probably need to reinstall your database software.", user: @user1, created_at: Time.new(2024, 12, 3, 18, 00))
   Reply.create!(post: @post4, text: "Joining tables will never work; you need to rewrite your entire application.", user: @user3, created_at: Time.new(2024, 12, 3, 19, 00))
 
+  10.times do |i|
+    Vote.create!(user: User.all.sample, votable: @post1, vote_type: :up)
+  end
+
+  15.times do |i|
+    Vote.create!(user: User.all.sample, votable: @post2, vote_type: :up)
+  end
+
+  20.times do |i|
+    Vote.create!(user: User.all.sample, votable: @post3, vote_type: :up)
+  end
+
+  10.times do |i|
+    Vote.create!(user: User.all.sample, votable: @post4, vote_type: :up)
+  end
+
+  10.times do |i|
+    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post1, text: "Try running rails db:drop db:create db:migrate db:seed"), vote_type: [:up, :down].shuffle.first)
+  end
+
+  15.times do |i|
+    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post1, text: "This issue requires you to completely delete your entire project. This is a symptom a greater issue with the project that requires it to be completely remade"), vote_type: [:up, :down].shuffle.first)
+  end
+
+  5.times do |i|
+    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post1, text: "I have no clue"), vote_type: [:up, :down].shuffle.first)
+  end
+
+  20.times do |i|
+    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post2, text: "Ensure you have required the file containing the method."), vote_type: [:up, :down].shuffle.first)
+  end
+
+  20.times do |i|
+    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post2, text: "Sometimes the method's name might be misspelled. Double-check your code."), vote_type: [:up, :down].shuffle.first)
+  end
+
+  10.times do |i|
+    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post3, text: "Consider using NumPy or pandas for optimized data processing."), vote_type: [:up, :down].shuffle.first)
+  end
+
+  15.times do |i|
+    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post3, text: "If you are doing repetitive operations, use caching or memoization."), vote_type: [:up, :down].shuffle.first)
+  end
+
+  5.times do |i|
+    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post3, text: "Your version of python is obviously corrupted in some way. You need to reinstall it completely"), vote_type: [:up, :down].shuffle.first)
+  end
+
+  5.times do |i|
+    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post3, text: "Windows is having an issue processing your python file due to a file issue. Delete the system32 file"), vote_type: [:up, :down].shuffle.first)
+  end
+
+  15.times do |i|
+    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post4, text: "Make sure you're using the correct type of join for your use case."), vote_type: [:up, :down].shuffle.first)
+  end
+
+  10.times do |i|
+    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post4, text: "Check if there are duplicate rows in your tables that might cause the issue."), vote_type: [:up, :down].shuffle.first)
+  end
+
+  5.times do |i|
+    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post4, text: "Use SELECT * FROM table1, table2 without a WHERE clause for better results."), vote_type: [:up, :down].shuffle.first)
+  end
+
+  5.times do |i|
+    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post4, text: "You probably need to reinstall your database software."), vote_type: [:up, :down].shuffle.first)
+  end
+
+  5.times do |i|
+    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post4, text: "Joining tables will never work; you need to rewrite your entire application."), vote_type: [:up, :down].shuffle.first)
+  end
+
+
