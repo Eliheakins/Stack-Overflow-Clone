@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :replies, dependent: :destroy
 
-  belongs_to :tag, optional: true
+  has_and_belongs_to_many :tags, optional: true
 
   def self.search_by_query(query, tag_ids = [])
     words = query.split.map { |word| sanitize_sql_like(word) }
@@ -21,5 +21,9 @@ class Post < ApplicationRecord
       base_query = base_query.joins(:tag).where(tags: { id: tag_ids })
     end
     base_query.order("match_count DESC")
+  end
+
+  def self.trigger_sort_job
+    SortPostsByTrendingJob.perform_later
   end
 end
