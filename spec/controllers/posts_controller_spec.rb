@@ -3,9 +3,12 @@ require 'rails_helper'
 RSpec.describe PostsController, type: :controller do
   let!(:tag1) { create(:tag, name: "Technology") }
   let!(:tag2) { create(:tag, name: "Education") }
-  let!(:post1) { create(:post, title: "Tech Post", text: "Content about technology", tag: tag1) }
-  let!(:post2) { create(:post, title: "Education Post", text: "Content about education", tag: tag2) }
-
+  let!(:post1) { create(:post, title: "Tech Post", text: "Content about technology") }
+  let!(:post2) { create(:post, title: "Education Post", text: "Content about education") }
+  before do
+    post1.tags << tag1
+    post2.tags << tag2
+  end
   describe "GET #index" do
     context "when no query or tags are provided" do
       it "returns all posts" do
