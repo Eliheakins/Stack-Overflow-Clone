@@ -16,9 +16,8 @@ class Post < ApplicationRecord
     match_count_query = "0" if match_count_query.blank?
     base_query = Post.select("posts.*, (#{match_count_query}) AS match_count")
                      .where(match_conditions, word: "%#{words.join('%')}%")
-
     if tag_ids.present?
-      base_query = base_query.joins(:tag).where(tags: { id: tag_ids })
+      base_query = base_query.joins(:tags).where(tags: { id: tag_ids })
     end
     base_query.order("match_count DESC")
   end
@@ -33,9 +32,8 @@ class Post < ApplicationRecord
     full_tags = []
     full_tags = full_tags + self.tags
     instructor_response = false
-    self.replies.each { |reply| instructor_response = true if reply.user.approved?}
+    self.replies.each { |reply| instructor_response = true if reply.user.approved? }
     full_tags = full_tags << Tag.approved if instructor_response
     full_tags
   end
-
 end
