@@ -4,18 +4,22 @@ class VotesController < ApplicationController
 
   def create
     @vote = @votable.votes.find_or_initialize_by(user: current_user)
-
-    if @vote.new_record? || @vote.vote_type != vote_params[:vote_type]
+  
+    if @vote.persisted? && @vote.vote_type == vote_params[:vote_type]
+      @vote.destroy
+      redirect_to @votable, notice: 'Your vote has been removed.'
+    else
       @vote.vote_type = vote_params[:vote_type]
       if @vote.save
-        redirect_to @votable, notice: 'Your vote has been cast.'
+        redirect_to @votable, notice: 'Your vote has been updated.'
       else
-        redirect_to @votable, alert: 'An error occurred while casting your vote.'
+        redirect_to @votable, alert: 'An error occurred while updating your vote.'
       end
-    else
-      redirect_to @votable, alert: 'You have already voted.'
     end
   end
+  
+  
+  
 
   def destroy
     @vote = @votable.votes.find_by(user: current_user)

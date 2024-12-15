@@ -18,11 +18,21 @@
   <% end %>
 </div>
 <% if user_signed_in? %>
-  <%= button_to 'Upvote', post_votes_path(@post, vote: { vote_type: 'up' }), method: :post %>
-  <%= button_to 'Downvote', post_votes_path(@post, vote: { vote_type: 'down' }), method: :post %>
+  <% current_vote = @post.votes.find_by(user: current_user) %>
+  <div class="vote-buttons">
+    <%= button_to 'Upvote', 
+                  post_votes_path(@post, vote: { vote_type: 'up' }), 
+                  method: :post, 
+                  class: "btn #{current_vote&.vote_type == 'up' ? 'btn-primary' : 'btn-outline-primary'}" %>
+    <%= button_to 'Downvote', 
+                  post_votes_path(@post, vote: { vote_type: 'down' }), 
+                  method: :post, 
+                  class: "btn #{current_vote&.vote_type == 'down' ? 'btn-danger' : 'btn-outline-danger'}" %>
+  </div>
 <% else %>
   <p>You must be logged in to vote.</p>
 <% end %>
+
 
 <section class="replies mt-5">
   <h3>Replies</h3>

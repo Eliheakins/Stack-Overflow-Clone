@@ -1,7 +1,8 @@
+
 FactoryBot.define do
   factory :vote do
-    user { nil }
-    post { nil }
-    vote_type { 1 }
+    association :user
+    votable { association(:post) } # Default to associating with a Post; can override with a Reply
+    vote_type { :up }
   end
 end

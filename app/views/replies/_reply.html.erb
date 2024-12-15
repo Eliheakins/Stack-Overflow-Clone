@@ -9,8 +9,17 @@
         <div>
           <p class="mb-0">Votes: <%= reply.votes.up.count - reply.votes.down.count %></p>
           <div class="d-flex align-items-center">
-            <%= button_to "Upvote", post_reply_votes_path(reply.post, reply, vote: { vote_type: :up }), method: :post, class: "btn btn-success btn-sm mr-2" %>
-            <%= button_to "Downvote", post_reply_votes_path(reply.post, reply, vote: { vote_type: :down }), method: :post, class: "btn btn-danger btn-sm" %>
+            <% current_vote = reply.votes.find_by(user: current_user) %>
+            
+            <%= button_to "Upvote",
+                          post_reply_votes_path(reply.post, reply, vote: { vote_type: :up }),
+                          method: :post,
+                          class: "btn #{current_vote&.vote_type == 'up' ? 'btn-primary' : 'btn-outline-primary'} btn-sm mr-2" %>
+
+            <%= button_to "Downvote",
+                          post_reply_votes_path(reply.post, reply, vote: { vote_type: :down }),
+                          method: :post,
+                          class: "btn #{current_vote&.vote_type == 'down' ? 'btn-danger' : 'btn-outline-danger'} btn-sm" %>
           </div>
         </div>
 

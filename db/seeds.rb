@@ -81,35 +81,35 @@
     Vote.create!(user: User.all.sample, votable: @post1, vote_type: :up)
   end
 
-  15.times do |i|
+  12.times do |i|
     Vote.create!(user: User.all.sample, votable: @post2, vote_type: :up)
   end
 
-  20.times do |i|
+  27.times do |i|
     Vote.create!(user: User.all.sample, votable: @post3, vote_type: :up)
   end
 
-  10.times do |i|
+  19.times do |i|
     Vote.create!(user: User.all.sample, votable: @post4, vote_type: :up)
   end
 
-  10.times do |i|
-    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post1, text: "Try running rails db:drop db:create db:migrate db:seed"), vote_type: [:up, :down].shuffle.first)
+  13.times do |i|
+    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post1, text: "Try running rails db:drop db:create db:migrate db:seed"), vote_type: :up)
   end
 
-  15.times do |i|
-    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post1, text: "This issue requires you to completely delete your entire project. This is a symptom a greater issue with the project that requires it to be completely remade"), vote_type: [:up, :down].shuffle.first)
+  9.times do |i|
+    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post1, text: "This issue requires you to completely delete your entire project. This is a symptom a greater issue with the project that requires it to be completely remade"), vote_type: :down)
   end
 
   5.times do |i|
-    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post1, text: "I have no clue"), vote_type: [:up, :down].shuffle.first)
+    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post1, text: "I have no clue"), vote_type: :down)
   end
 
-  20.times do |i|
+  17.times do |i|
     Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post2, text: "Ensure you have required the file containing the method."), vote_type: [:up, :down].shuffle.first)
   end
 
-  20.times do |i|
+  15.times do |i|
     Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post2, text: "Sometimes the method's name might be misspelled. Double-check your code."), vote_type: [:up, :down].shuffle.first)
   end
 
@@ -125,8 +125,8 @@
     Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post3, text: "Your version of python is obviously corrupted in some way. You need to reinstall it completely"), vote_type: [:up, :down].shuffle.first)
   end
 
-  5.times do |i|
-    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post3, text: "Windows is having an issue processing your python file due to a file issue. Delete the system32 file"), vote_type: [:up, :down].shuffle.first)
+  9.times do |i|
+    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post3, text: "Windows is having an issue processing your python file due to a file issue. Delete the system32 file"), vote_type: :down)
   end
 
   15.times do |i|
@@ -137,16 +137,26 @@
     Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post4, text: "Check if there are duplicate rows in your tables that might cause the issue."), vote_type: [:up, :down].shuffle.first)
   end
 
-  5.times do |i|
+  8.times do |i|
     Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post4, text: "Use SELECT * FROM table1, table2 without a WHERE clause for better results."), vote_type: [:up, :down].shuffle.first)
   end
 
   5.times do |i|
-    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post4, text: "You probably need to reinstall your database software."), vote_type: [:up, :down].shuffle.first)
+    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post4, text: "You probably need to reinstall your database software."), vote_type: :down)
   end
 
-  5.times do |i|
-    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post4, text: "Joining tables will never work; you need to rewrite your entire application."), vote_type: [:up, :down].shuffle.first)
+  3.times do |i|
+    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post4, text: "Joining tables will never work; you need to rewrite your entire application."), vote_type: :down)
   end
-
+  8.times do |i|
+    Vote.create!(user: User.all.sample, votable: Reply.find_by(post: @post2, text: "Ensure you have required the file containing the method."), vote_type: :up)
+  end
+  10.times do |i|
+    Vote.create!(user: User.all.sample, votable: @post1, vote_type: [:up, :down].sample)
+  end
+  
+  8.times do |i|
+    Vote.create!(user: User.all.sample, votable: @post4, vote_type: [:up, :down].sample)
+  end
+    
 
