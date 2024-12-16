@@ -29,7 +29,6 @@ RSpec.describe "posts/index", type: :view do
     assert_select cell_selector, text: "View this post", count: 2
   end
 end
-end
 
 RSpec.describe "posts/index.html.erb", type: :view do
   let!(:tag1) { create(:tag, name: "Technology") }
