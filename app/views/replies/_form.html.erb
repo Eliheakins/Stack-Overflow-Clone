@@ -12,12 +12,12 @@
 
   <% if @post %>
     <div class="post-details mb-4">
-      <%= render @post %>
+      <%= render @post, show_save_button: false %>
     </div>
     <%= form.hidden_field :post_id, value: @post.id %>
   <% else %>
     <div class="post-details mb-4">
-      <%= render @reply.post %>
+      <%= render @reply.post, show_save_button: false %>
     </div>
     <%= form.hidden_field :post_id, value: @reply.post_id %>
 

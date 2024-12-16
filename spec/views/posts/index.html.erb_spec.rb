@@ -21,11 +21,10 @@ RSpec.describe "posts/index", type: :view do
 
   it "renders a list of posts" do
     render
-    cell_selector = 'div.card-body > h5.card-title'
-    assert_select cell_selector, text: Regexp.new("Title"), count: 2
-    cell_selector = 'div.card-body > p.card-text'
-    assert_select cell_selector, text: Regexp.new("Text"), count: 2
-    cell_selector = 'div.card-body > a.btn.btn-primary'
-    assert_select cell_selector, text: "View this post", count: 2
+    assert_select "a.text-decoration-none.posts-card[href=?]", post_path(Post.first), count: 1
+    assert_select "a.text-decoration-none.posts-card[href=?]", post_path(Post.second), count: 1
+
+    assert_select "h5.card-title", text: Regexp.new("Title"), count: 2
+    assert_select "p.card-text", text: Regexp.new("Text"), count: 2
   end
 end

@@ -19,6 +19,8 @@ class RepliesController < ApplicationController
 
   # GET /replies/1/edit
   def edit
+    @reply = Reply.find(params[:id])
+    @post = @reply.post
   end
 
   # POST /replies or /replies.json

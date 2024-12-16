@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "replies/new", type: :view do
+  include Devise::Test::ControllerHelpers
   before(:all) do
     @user=create(:user)
     @post=Post.create(user: @user) # creates post necessary for reply to be created
@@ -22,6 +23,7 @@ RSpec.describe "replies/new", type: :view do
 
   it "renders new reply form" do
     render
+    puts response.body
     assert_select "form[action=?][method=?]", post_replies_path(@post), "post" do
       assert_select "input[name=?]", "reply[text]"
       assert_select "input[name=?]", "reply[user_id]" if response.body.include?("reply[user_id]")

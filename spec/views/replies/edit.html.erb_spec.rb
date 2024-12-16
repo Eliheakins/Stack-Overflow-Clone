@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "replies/edit", type: :view do
+  include Devise::Test::ControllerHelpers
   let!(:user) { create(:user) }
   let!(:post) { Post.create!(user: user) }
 
@@ -14,6 +15,8 @@ RSpec.describe "replies/edit", type: :view do
   }
 
   before(:each) do
+    sign_in user
+    allow(user).to receive(:saved_posts_records).and_return([post])
     assign(:reply, reply)
     assign(:post, post)
   end

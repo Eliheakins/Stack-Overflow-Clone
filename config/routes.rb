@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: [ :show, :edit, :update, :index ]
+  resources :users, only: [ :show, :edit, :update, :index ] do
+    member do
+      get :saved_posts
+  end
+  end
   resources :replies
   resources :posts
   resources :posts do
     resources :replies, only: [ :new, :create, :edit, :update ]
+    resource :saved_post, only: [:create, :destroy]
   end
   resources :tags
   resources :home, only: [ :show ]
@@ -20,4 +25,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#show"
+  
 end
