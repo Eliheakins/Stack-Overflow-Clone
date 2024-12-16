@@ -106,3 +106,4 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_11_221150) do
   add_foreign_key "saved_posts", "posts"
   add_foreign_key "saved_posts", "users"
 end
+

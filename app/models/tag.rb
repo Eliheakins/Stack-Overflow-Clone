@@ -4,7 +4,15 @@ class Tag < ApplicationRecord
         icon.variant :medium, resize_to_limit: [ 240, 240 ]
     end
 
-    has_many :posts
+    has_and_belongs_to_many :posts
+
+    def self.approved
+        Tag.find_by(name: "Instructor Response")
+    end
+
+    def self.choosable_tags
+        Tag.where.not(name: "Instructor Response")
+    end
 
     def self.tagNames
         Tag.all.distinct.pluck(:name)

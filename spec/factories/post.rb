@@ -1,8 +1,7 @@
 FactoryBot.define do
-    factory :post do
-      title { "Sample Post" }
-      text { "Test Content for Post" }
-      association :user 
-    end
+  factory :post do
+    title { "MyString" }
+    text { "MyString" }
+    association :user
   end
-  
+end

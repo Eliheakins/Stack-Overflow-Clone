@@ -4,7 +4,13 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    if (params[:query].nil? || params[:query].blank?) && (params[:tag_ids].nil? || params[:tag_ids].empty?)
+      @posts = Post.all.order(trend_score: :desc).includes(:tags)
+    else
+      query = params[:query].to_s
+      tag_ids = Array(params[:tag_ids]).reject(&:blank?).map(&:to_i)
+      @posts = Post.search_by_query(query, tag_ids).includes(:tags)
+    end
   end
 
   # GET /posts/1 or /posts/1.json
@@ -18,12 +24,17 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    @post = Post.find(params[:id])
+    respond_to do |format|
+      format.html # Default behavior for non-Turbo requests
+      format.turbo_stream { render partial: "posts/form", locals: { post: @post } }
+    end
   end
 
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
-
+    @post.tags = form_tags
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: "Post was successfully created." }
@@ -37,6 +48,7 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
+    @post.tags = form_tags
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to @post, notice: "Post was successfully updated." }
@@ -66,6 +78,13 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :text, :user_id, :tag_id, :votes)
+      params.require(:post).permit(:title, :text, :user_id, :votes)
+    end
+
+    def form_tags
+      return [] if params[:tag_ids].nil?
+      tag_ids = params[:tag_ids]
+      tag_ids.delete("1")
+      tags = Tag.where(id: tag_ids)
     end
 end
