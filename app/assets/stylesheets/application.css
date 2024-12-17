@@ -25,15 +25,6 @@
   margin: 0;
 }
 
-.posts-card {
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.posts-card:hover .card{
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  transition: 0.3s;
-}
 .custom-badge-color {
   background-color: #e0f7fa; /* Light cyan */
   color: #007bff; /* Dark blue for hyperlink */
