@@ -47,8 +47,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_11_221150) do
     t.integer "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "trend_score"
     t.index ["tag_id"], name: "index_posts_on_tag_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "posts_tags", id: false, force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "tag_id", null: false
   end
 
   create_table "replies", force: :cascade do |t|
@@ -80,6 +86,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_11_221150) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_creds", force: :cascade do |t|
+    t.string "name"
+    t.string "details"
+    t.string "school"
+    t.boolean "approved"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_creds_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "firstname", default: "", null: false
     t.string "lastname", default: "", null: false
@@ -105,5 +122,5 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_11_221150) do
   add_foreign_key "replies", "users"
   add_foreign_key "saved_posts", "posts"
   add_foreign_key "saved_posts", "users"
+  add_foreign_key "user_creds", "users"
 end
-
