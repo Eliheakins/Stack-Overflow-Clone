@@ -10,6 +10,8 @@
 
   @user1=User.create!(username: 'user', password: 'password', firstname: 'User', lastname: 'Lastname', email: 'user@colgate.edu', role: 'student')
   @user2=User.create!(username: 'prof', password: 'password', firstname: 'professor', lastname: 'Schmoe', email: 'prof@colgate.edu', role: 'instructor')
+  @user_cred2 = UserCred.create!(user_id: @user2.id, approved: true)
+
   @user3=User.create!(username: 'admin', password: 'password', firstname: 'admin', lastname: 'admin', email: 'admin@colgate.edu', role: 'admin')
   @user4=User.create!(username: 'jschmoe', password: 'password', firstname: 'Joe', lastname: 'Schmoe', email: 'jschmoe@colgate.edu', role: 'student')
   @user5=User.create!(username: 'jdoe', password: 'password', firstname: 'John', lastname: 'Doe', email: 'jdoe@colgate.edu', role: 'student')
@@ -31,7 +33,7 @@
   Tag.create!(name: "Semantic Error", description: "Questions asking about programs producing unexpected output")
   Tag.create!(name: "Runtime Error", description: "Questions asking about programs producing errors at runtime")
 
-
+  Tag.create!(name: "Instructor Response", description: "Posts where an instructor has responded")
   @post1=Post.create!(
     title: "Issue running rails db:seed",
     text: "I am running into this issue when I try and run rails db:seed bin/rails aborted! ActiveRecord::RecordInvalid: Validation failed: Email has already been taken (ActiveRecord::RecordInvalid)",
@@ -41,6 +43,14 @@
   Reply.create!(post: @post1, text: "Try running rails db:drop db:create db:migrate db:seed", user: @user5, created_at: Time.new(2024, 12, 6, 16, 45))
   Reply.create!(post: @post1, text: "This issue requires you to completely delete your entire project. This is a symptom a greater issue with the project that requires it to be completely remade", user: @user2, created_at: Time.new(2024, 12, 6, 20, 11))
   Reply.create!(post: @post1, text: "I have no clue", user: @user3, created_at: Time.new(2024, 12, 6, 21, 43))
+    votes: 522,
+    created_at: Time.new(2024, 12, 6, 14, 30))
+  @post1.tags <<  @rails_tag
+  @post1.save!
+
+  Reply.create!(post: @post1, text: "Try running rails db:drop db:create db:migrate db:seed", votes: 100, user: @user5, created_at: Time.new(2024, 12, 6, 16, 45))
+  Reply.create!(post: @post1, text: "This issue requires you to completely delete your entire project. This is a symptom a greater issue with the project that requires it to be completely remade", votes: 1, user: @user2, created_at: Time.new(2024, 12, 6, 20, 11))
+  Reply.create!(post: @post1, text: "I have no clue", votes: 2, user: @user3, created_at: Time.new(2024, 12, 6, 21, 43))
 
   @post2 = Post.create!(
     title: "How to debug undefined method error in Ruby",
@@ -51,6 +61,13 @@
   )
   Reply.create!(post: @post2, text: "Ensure you have required the file containing the method.", user: @user2, created_at: Time.new(2024, 12, 5, 11, 45))
   Reply.create!(post: @post2, text: "Sometimes the method's name might be misspelled. Double-check your code.", user: @user5, created_at: Time.new(2024, 12, 5, 13, 20))
+    votes: 15,
+    created_at: Time.new(2024, 12, 5, 10, 15)
+  )
+  @post2.tags << @ruby_tag
+  @post2.save!
+  Reply.create!(post: @post2, text: "Ensure you have required the file containing the method.", votes: 42, user: @user2, created_at: Time.new(2024, 12, 5, 11, 45))
+  Reply.create!(post: @post2, text: "Sometimes the method's name might be misspelled. Double-check your code.", votes: 30, user: @user5, created_at: Time.new(2024, 12, 5, 13, 20))
 
   @post3 = Post.create!(
     title: "Why is my Python script slow?",
@@ -63,6 +80,15 @@
   Reply.create!(post: @post3, text: "If you are doing repetitive operations, use caching or memoization.", user: @user1, created_at: Time.new(2024, 12, 4, 11, 00))
   Reply.create!(post: @post3, text: "Your version of python is obviously corrupted in some way. You need to reinstall it completely", user: @user2, created_at: Time.new(2024, 12, 4, 11, 00))
   Reply.create!(post: @post3, text: "Windows is having an issue processing your python file due to a file issue. Delete the system32 file", user: @user3, created_at: Time.new(2024, 12, 4, 11, 00))
+    votes: 120,
+    created_at: Time.new(2024, 12, 4, 9, 30)
+  )
+  @post3.tags << @python_tag
+  @post3.save!
+  Reply.create!(post: @post3, text: "Consider using NumPy or pandas for optimized data processing.", votes: 90, user: @user4, created_at: Time.new(2024, 12, 4, 10, 15))
+  Reply.create!(post: @post3, text: "If you are doing repetitive operations, use caching or memoization.", votes: 45, user: @user1, created_at: Time.new(2024, 12, 4, 11, 00))
+  Reply.create!(post: @post3, text: "Your version of python is obviously corrupted in some way. You need to reinstall it completely", votes: 0, user: @user2, created_at: Time.new(2024, 12, 4, 11, 00))
+  Reply.create!(post: @post3, text: "Windows is having an issue processing your python file due to a file issue. Delete the system32 file", votes: 0, user: @user3, created_at: Time.new(2024, 12, 4, 11, 00))
 
   @post4 = Post.create!(
     title: "Why does my SQL query return unexpected results?",
@@ -160,3 +186,13 @@
   end
     
 
+    votes: 78,
+    created_at: Time.new(2024, 12, 3, 14, 45)
+  )
+  @post4.tags << @sql_tag
+  @post4.save!
+  Reply.create!(post: @post4, text: "Make sure you're using the correct type of join for your use case.", votes: 40, user: @user4, created_at: Time.new(2024, 12, 3, 15, 30))
+  Reply.create!(post: @post4, text: "Check if there are duplicate rows in your tables that might cause the issue.", votes: 25, user: @user5, created_at: Time.new(2024, 12, 3, 16, 00))
+  Reply.create!(post: @post4, text: "Use SELECT * FROM table1, table2 without a WHERE clause for better results.", votes: 0, user: @user3, created_at: Time.new(2024, 12, 3, 17, 00))
+  Reply.create!(post: @post4, text: "You probably need to reinstall your database software.", votes: -5, user: @user1, created_at: Time.new(2024, 12, 3, 18, 00))
+  Reply.create!(post: @post4, text: "Joining tables will never work; you need to rewrite your entire application.", votes: -10, user: @user3, created_at: Time.new(2024, 12, 3, 19, 00))

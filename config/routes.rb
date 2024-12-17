@@ -1,12 +1,23 @@
 Rails.application.routes.draw do
+  
   devise_for :users
-  resources :users, only: [ :show, :edit, :update, :index ]
+  resources :users, only: [ :show, :edit, :update, :index ] do
+    resources :user_creds, only: [ :new, :create]
+    member do
+      get :saved_posts
+    end
+  end
+  put '/user_creds/:id/approve', to: 'user_creds#approve', as: 'user_cred_approve'
+  delete '/users/:id', to: 'user_creds#delete', as: 'user_cred'
+  get '/user_creds/moderate', to:'user_creds#moderate', as: 'user_creds'
   resources :replies
   resources :posts
   resources :posts do
     resources :replies, only: [ :new, :create, :edit, :update ]
+    resource :saved_post, only: [ :create, :destroy]
   end
   resources :tags
+  
   resources :home, only: [ :show ]
   resources :posts do
     resources :votes, only: [:create, :destroy]
