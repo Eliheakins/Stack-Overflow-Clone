@@ -10,13 +10,15 @@
 
   @user1=User.create!(username: 'user', password: 'password', firstname: 'User', lastname: 'Lastname', email: 'user@colgate.edu', role: 'student')
   @user2=User.create!(username: 'prof', password: 'password', firstname: 'professor', lastname: 'Schmoe', email: 'prof@colgate.edu', role: 'instructor')
-  @user_cred2 = UserCred.create!(user_id: @user2.id, approved: true)
+  @user_cred2 = UserCred.create!(user_id: @user2.id, school: "Stack Overflow University", details: "I have been a computer science professor at Stack Overflow University for 5 years", approved: true)
 
   @user3=User.create!(username: 'admin', password: 'password', firstname: 'admin', lastname: 'admin', email: 'admin@colgate.edu', role: 'admin')
   @user4=User.create!(username: 'jschmoe', password: 'password', firstname: 'Joe', lastname: 'Schmoe', email: 'jschmoe@colgate.edu', role: 'student')
+  @user_cred4 = UserCred.create!(user_id: @user4.id, name: "Joe Schmoe", school: "Real School", details: "I am definitely a professor...", approved: false)
   @user5=User.create!(username: 'jdoe', password: 'password', firstname: 'John', lastname: 'Doe', email: 'jdoe@colgate.edu', role: 'student')
   @user6 = User.create!(username: 'janed', password: 'password', firstname: 'Jane', lastname: 'Doe', email: 'janed@colgate.edu', role: 'student')
 
+  
   Tag.create!(name: "", description: "Empty Tag")
   @python_tag=Tag.create!(name: "Python", description: "Python is a programming language that allows for many different programming practices including Object Oriented Programming and many machine learning packages ")
   Tag.create!(name: "Java", description: "Java is an programming languages with static typing to create code that can be ran ony any platform once completed")
