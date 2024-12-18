@@ -18,6 +18,7 @@ class UserCredsController < ApplicationController
   def delete
     @user_cred = UserCred.find(params[:id])
     @user_cred.destroy()
+    redirect_to user_creds_path
   end
 
   def new

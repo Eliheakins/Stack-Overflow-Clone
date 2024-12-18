@@ -20,12 +20,12 @@
         <td> <%= user_cred.details %>
         <td>
         <%= button_to "Approve", user_cred_approve_path(user_cred), method: :put, class: 'btn btn-secondary' %>
-        <%= button_to "Deny", user_cred_path(user_cred), method: :delete, class: "btn btn-warning" %> 
+        <%= button_to "Deny", user_cred_path(user_cred), method: :delete, class: "btn btn-danger" %> 
         </td>
       </tr>
       <% end%>
     </tbody>
   </table>
 
-  <%= link_to "Back to posts", posts_path, class: "btn btn-secondary" %> <br>
+  <%= link_to "Back to profile", user_path(current_user), class: "btn btn-secondary" %> <br>
 </div>
