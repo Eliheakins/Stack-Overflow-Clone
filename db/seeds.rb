@@ -17,7 +17,7 @@
   @user5=User.create!(username: 'jdoe', password: 'password', firstname: 'John', lastname: 'Doe', email: 'jdoe@colgate.edu', role: 'student')
   @user6 = User.create!(username: 'janed', password: 'password', firstname: 'Jane', lastname: 'Doe', email: 'janed@colgate.edu', role: 'student')
 
-  Tag.create!(name: "", description: "Empty Tag")
+  Tag.create!(name: "C++", description: "Empty Tag")
   @python_tag=Tag.create!(name: "Python", description: "Python is a programming language that allows for many different programming practices including Object Oriented Programming and many machine learning packages ")
   Tag.create!(name: "Java", description: "Java is an programming languages with static typing to create code that can be ran ony any platform once completed")
   Tag.create!(name: "C", description: "C is a programming language that allows for specific interactions with the low level processes of programming")
@@ -42,7 +42,7 @@
     created_at: Time.new(2024, 12, 6, 14, 30))
   Reply.create!(post: @post1, text: "Try running rails db:drop db:create db:migrate db:seed", user: @user5, created_at: Time.new(2024, 12, 6, 16, 45))
   Reply.create!(post: @post1, text: "This issue requires you to completely delete your entire project. This is a symptom a greater issue with the project that requires it to be completely remade", user: @user2, created_at: Time.new(2024, 12, 6, 20, 11))
-  Reply.create!(post: @post1, text: "I have no clue", user: @user3, created_at: Time.new(2024, 12, 6, 21, 43))
+  Reply.create!(post: @post1, text: "I have no clue", user: @user3, created_at: Time.new(2024, 12, 6, 21, 43),
     votes: 522,
     created_at: Time.new(2024, 12, 6, 14, 30))
   @post1.tags <<  @rails_tag
@@ -60,7 +60,7 @@
     created_at: Time.new(2024, 12, 5, 10, 15)
   )
   Reply.create!(post: @post2, text: "Ensure you have required the file containing the method.", user: @user2, created_at: Time.new(2024, 12, 5, 11, 45))
-  Reply.create!(post: @post2, text: "Sometimes the method's name might be misspelled. Double-check your code.", user: @user5, created_at: Time.new(2024, 12, 5, 13, 20))
+  Reply.create!(post: @post2, text: "Sometimes the method's name might be misspelled. Double-check your code.", user: @user5, created_at: Time.new(2024, 12, 5, 13, 20),
     votes: 15,
     created_at: Time.new(2024, 12, 5, 10, 15)
   )
@@ -80,15 +80,12 @@
   Reply.create!(post: @post3, text: "If you are doing repetitive operations, use caching or memoization.", user: @user1, created_at: Time.new(2024, 12, 4, 11, 00))
   Reply.create!(post: @post3, text: "Your version of python is obviously corrupted in some way. You need to reinstall it completely", user: @user2, created_at: Time.new(2024, 12, 4, 11, 00))
   Reply.create!(post: @post3, text: "Windows is having an issue processing your python file due to a file issue. Delete the system32 file", user: @user3, created_at: Time.new(2024, 12, 4, 11, 00))
-    votes: 120,
-    created_at: Time.new(2024, 12, 4, 9, 30)
-  )
   @post3.tags << @python_tag
   @post3.save!
-  Reply.create!(post: @post3, text: "Consider using NumPy or pandas for optimized data processing.", votes: 90, user: @user4, created_at: Time.new(2024, 12, 4, 10, 15))
-  Reply.create!(post: @post3, text: "If you are doing repetitive operations, use caching or memoization.", votes: 45, user: @user1, created_at: Time.new(2024, 12, 4, 11, 00))
-  Reply.create!(post: @post3, text: "Your version of python is obviously corrupted in some way. You need to reinstall it completely", votes: 0, user: @user2, created_at: Time.new(2024, 12, 4, 11, 00))
-  Reply.create!(post: @post3, text: "Windows is having an issue processing your python file due to a file issue. Delete the system32 file", votes: 0, user: @user3, created_at: Time.new(2024, 12, 4, 11, 00))
+  Reply.create!(post: @post3, text: "Consider using NumPy or pandas for optimized data processing.", user: @user4, created_at: Time.new(2024, 12, 4, 10, 15))
+  Reply.create!(post: @post3, text: "If you are doing repetitive operations, use caching or memoization.", user: @user1, created_at: Time.new(2024, 12, 4, 11, 00))
+  Reply.create!(post: @post3, text: "Your version of python is obviously corrupted in some way. You need to reinstall it completely", user: @user2, created_at: Time.new(2024, 12, 4, 11, 00))
+  Reply.create!(post: @post3, text: "Windows is having an issue processing your python file due to a file issue. Delete the system32 file", user: @user3, created_at: Time.new(2024, 12, 4, 11, 00))
 
   @post4 = Post.create!(
     title: "Why does my SQL query return unexpected results?",
@@ -102,6 +99,7 @@
   Reply.create!(post: @post4, text: "Use SELECT * FROM table1, table2 without a WHERE clause for better results.", user: @user3, created_at: Time.new(2024, 12, 3, 17, 00))
   Reply.create!(post: @post4, text: "You probably need to reinstall your database software.", user: @user1, created_at: Time.new(2024, 12, 3, 18, 00))
   Reply.create!(post: @post4, text: "Joining tables will never work; you need to rewrite your entire application.", user: @user3, created_at: Time.new(2024, 12, 3, 19, 00))
+
 
   10.times do |i|
     Vote.create!(user: User.all.sample, votable: @post1, vote_type: :up)
@@ -186,9 +184,7 @@
   end
     
 
-    votes: 78,
-    created_at: Time.new(2024, 12, 3, 14, 45)
-  )
+
   @post4.tags << @sql_tag
   @post4.save!
   Reply.create!(post: @post4, text: "Make sure you're using the correct type of join for your use case.", votes: 40, user: @user4, created_at: Time.new(2024, 12, 3, 15, 30))

@@ -11,6 +11,19 @@
     <turbo-frame id="post_edit_<%= @post.id %>" class="d-inline-block">
       <%= link_to "Edit this post", edit_post_path(@post), class: "btn btn-warning", data: { turbo_frame: "post_edit_#{@post.id}" } %>
     </turbo-frame>
+    <% if @post.solved? %>
+      <turbo-frame id="solve_post_<%= @post.id %>" class="d-inline-block">
+        <%= button_to "Remove Post as Solved", unsolve_post_path(@post),method: :put, class: "btn btn-warning", data: { turbo_frame: "unsolve_post_#{@post.id}" } %>
+      </turbo-frame>
+    <% else %>
+      <turbo-frame id="unsolve_post_<%= @post.id %>" class="d-inline-block">
+        <%= button_to "Mark Post as Solved", solve_post_path(@post), method: :put,  class: "btn btn-warning", data: { turbo_frame: "solve_post_#{@post.id}" } %>
+
+      </turbo-frame>
+    <% end %>
+    <turbo-frame id="solve_post_<%= @post.id %>" class="d-inline-block">
+      
+    </turbo-frame>
   <% end %>
   <%= link_to "Back to posts", posts_path, class: "btn btn-secondary" %>
   <% if @post.check_user_authorized(current_user) %>

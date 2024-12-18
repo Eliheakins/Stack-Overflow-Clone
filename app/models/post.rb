@@ -40,4 +40,11 @@ class Post < ApplicationRecord
     full_tags = full_tags << Tag.approved if instructor_response
     full_tags
   end
+
+  def solved?
+    self.tags.each do |tag|
+      return true if tag==Tag.find_by(name: "Post Solved")
+    end
+    return false
+  end
 end

@@ -28,6 +28,17 @@
 
         <% if reply.check_user_authorized(current_user) %>
           <div class="button-row text-center mt-4">
+            <% if current_user == reply.post.user %>
+              <% if reply.solution %>
+                <turbo-frame id="unsolve_reply_<%= reply.id %>" class="d-inline-block">
+                  <%= button_to "Remove Reply as Solution", unsolve_reply_path(reply), class: "btn btn-warning btn-sm mr-2" %>
+                </turbo-frame>
+              <% else %>
+                <turbo-frame id="solve_reply_<%= reply.id %>" class="d-inline-block">
+                  <%= button_to "Mark Reply as Solution", solve_reply_path(reply), class: "btn btn-warning btn-sm mr-2" %>
+                </turbo-frame>
+              <% end %>
+            <% end %>
             <turbo-frame id="reply_edit_<%= reply.id %>" class="d-inline-block">
               <%= link_to "Edit this reply", edit_reply_path(reply), class: "btn btn-warning btn-sm mr-2", title: "Edit your reply" %>
             </turbo-frame>
