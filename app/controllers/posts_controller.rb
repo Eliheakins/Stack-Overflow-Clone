@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :set_post, only: %i[ show edit update destroy solve  unsolve]
   before_action :authenticate_user!, only: %i[ new create edit update destroy ]
 
   # GET /posts or /posts.json
@@ -71,14 +71,13 @@ class PostsController < ApplicationController
   end
 
   def solve
-    @post << Tag.find_by(name: "Post Solved") unless @post.solved?
-    @post.save
+    @post.solve
     flash[:notice] = "After marking post as solved, user should edit the post to identify solution or mark the reply with the correct solution"
     redirect_to post_path(@post.id)
   end
 
   def unsolve
-    @post.tags.delete(Tag.find_by(name: "Post Solved"))
+    @post.unsolve
     redirect_to post_path(@post.id)
   end
 

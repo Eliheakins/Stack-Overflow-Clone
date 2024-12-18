@@ -34,6 +34,9 @@
   Tag.create!(name: "Runtime Error", description: "Questions asking about programs producing errors at runtime")
 
   Tag.create!(name: "Instructor Response", description: "Posts where an instructor has responded")
+
+  Tag.create!(name: "Post Solved", description: "Posts where the issue has been indicated as solved")
+  
   @post1=Post.create!(
     title: "Issue running rails db:seed",
     text: "I am running into this issue when I try and run rails db:seed bin/rails aborted! ActiveRecord::RecordInvalid: Validation failed: Email has already been taken (ActiveRecord::RecordInvalid)",

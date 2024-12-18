@@ -78,7 +78,7 @@ class RepliesController < ApplicationController
     @reply.solution = true
     @reply.save
     @reply.post.solve
-    redirect_to post_path(@post)
+    redirect_to post_path(@reply.post.id)
   end
 
   def unsolve
@@ -86,7 +86,7 @@ class RepliesController < ApplicationController
     @reply.solution = false
     @reply.save
     @reply.post.unsolve
-    redirect_to post_path(@post)
+    redirect_to post_path(@reply.post.id)
   end
 
   private
