@@ -29,6 +29,7 @@ Given('I am logged in') do
 end
 
 Given('I am logged in as user1') do
+  click_on "Log out"
   visit "/users/sign_in"
   fill_in 'Username', with: 'user1'
   fill_in 'Password', with: 'password'
@@ -64,6 +65,10 @@ end
 
 When('I click {string}') do |string|
     click_on string
+end
+
+When('I click the first {string}') do |string|
+  first(:button,string).click
 end
 
 Then('I should see {string}') do |string|
