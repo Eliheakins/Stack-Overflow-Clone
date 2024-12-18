@@ -4,6 +4,8 @@
     <title>Profile Page</title>
   </head>
 
+
+
   <body class="bg-light">
     <div class="container mt-5 p-4 bg-white rounded shadow">
       <h1 class="text-center text-primary">Welcome, <%= @user.firstname %>!</h1>
@@ -15,7 +17,11 @@
         <p class="lead"><strong> Certified Instructor</strong> </p>
       <% end %>
 
-      
+      <% if notice %>
+      <div>
+      <%= notice %>
+      </div>
+      <% end %>
       <div class="text-center mt-4">
         <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-outline-primary mx-2' %>
         <%= link_to 'Send Credentials', new_user_user_cred_path(@user), class: 'btn btn-outline-primary mx-2' %>
@@ -23,7 +29,7 @@
       <div class= "text-center mt-4">
         <% if !current_user.nil? && (current_user.admin?)%>
         Admin Options:
-        <%= link_to "Approve Credentials", user_creds_path, class: "btn btn-outline-primary mx-2" %>   
+        <%= link_to "Approve Credentials", user_creds_mod_path, class: "btn btn-outline-primary mx-2" %>   
         <%= link_to "Revoke Credentials", user_creds_path, class: "btn btn-outline-primary mx-2" %> 
         <% end %>
       </div>
