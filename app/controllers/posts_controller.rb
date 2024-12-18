@@ -78,6 +78,7 @@ class PostsController < ApplicationController
 
   def unsolve
     @post.unsolve
+    flash[:notice]= "Reply solution still marked as solution" if @post.reply_sol? 
     redirect_to post_path(@post.id)
   end
 
