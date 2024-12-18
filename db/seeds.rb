@@ -35,7 +35,7 @@
   Tag.create!(name: "Semantic Error", description: "Questions asking about programs producing unexpected output")
   Tag.create!(name: "Runtime Error", description: "Questions asking about programs producing errors at runtime")
 
-  Tag.create!(name: "Instructor Response", description: "Posts where an instructor has responded")
+  @instr_tag = Tag.create!(name: "Instructor Response", description: "Posts where an instructor has responded")
   @post1=Post.create!(
     title: "Issue running rails db:seed",
     text: "I am running into this issue when I try and run rails db:seed bin/rails aborted! ActiveRecord::RecordInvalid: Validation failed: Email has already been taken (ActiveRecord::RecordInvalid)",
@@ -47,6 +47,8 @@
 
   Reply.create!(post: @post1, text: "Try running rails db:drop db:create db:migrate db:seed", votes: 100, user: @user5, created_at: Time.new(2024, 12, 6, 16, 45))
   Reply.create!(post: @post1, text: "This issue requires you to completely delete your entire project. This is a symptom a greater issue with the project that requires it to be completely remade", votes: 1, user: @user2, created_at: Time.new(2024, 12, 6, 20, 11))
+  @post1.tags << @instr_tag
+
   Reply.create!(post: @post1, text: "I have no clue", votes: 2, user: @user3, created_at: Time.new(2024, 12, 6, 21, 43))
 
   @post2 = Post.create!(
@@ -59,6 +61,7 @@
   @post2.tags << @ruby_tag
   @post2.save!
   Reply.create!(post: @post2, text: "Ensure you have required the file containing the method.", votes: 42, user: @user2, created_at: Time.new(2024, 12, 5, 11, 45))
+  @post2.tags << @instr_tag
   Reply.create!(post: @post2, text: "Sometimes the method's name might be misspelled. Double-check your code.", votes: 30, user: @user5, created_at: Time.new(2024, 12, 5, 13, 20))
 
   @post3 = Post.create!(
@@ -73,6 +76,8 @@
   Reply.create!(post: @post3, text: "Consider using NumPy or pandas for optimized data processing.", votes: 90, user: @user4, created_at: Time.new(2024, 12, 4, 10, 15))
   Reply.create!(post: @post3, text: "If you are doing repetitive operations, use caching or memoization.", votes: 45, user: @user1, created_at: Time.new(2024, 12, 4, 11, 00))
   Reply.create!(post: @post3, text: "Your version of python is obviously corrupted in some way. You need to reinstall it completely", votes: 0, user: @user2, created_at: Time.new(2024, 12, 4, 11, 00))
+  @post3.tags << @instr_tag
+
   Reply.create!(post: @post3, text: "Windows is having an issue processing your python file due to a file issue. Delete the system32 file", votes: 0, user: @user3, created_at: Time.new(2024, 12, 4, 11, 00))
 
   @post4 = Post.create!(
