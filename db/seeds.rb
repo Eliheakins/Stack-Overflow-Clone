@@ -2,6 +2,19 @@
 @user1 = User.create!(username: 'user', password: 'password', firstname: 'User', lastname: 'Lastname', email: 'user@colgate.edu', role: 'student')
 @user2 = User.create!(username: 'prof', password: 'password', firstname: 'professor', lastname: 'Schmoe', email: 'prof@colgate.edu', role: 'instructor')
 @user_cred2 = UserCred.create!(user_id: @user2.id, approved: true)
+  # This file should ensure the existence of records required to run the application in every environment (production,
+  # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
+  # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+  #
+  # Example:
+  #
+  #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
+  #     MovieGenre.find_or_create_by!(name: genre_name)
+  #   end
+
+@user1=User.create!(username: 'user', password: 'password', firstname: 'User', lastname: 'Lastname', email: 'user@colgate.edu', role: 'student')
+@user2=User.create!(username: 'prof', password: 'password', firstname: 'professor', lastname: 'Schmoe', email: 'prof@colgate.edu', role: 'instructor')
+@user_cred2 = UserCred.create!(user_id: @user2.id, school: "Stack Overflow University", details: "I have been a computer science professor at Stack Overflow University for 5 years", approved: true)
 
 @user3 = User.create!(username: 'admin', password: 'password', firstname: 'admin', lastname: 'admin', email: 'admin@colgate.edu', role: 'admin')
 @user4 = User.create!(username: 'jschmoe', password: 'password', firstname: 'Joe', lastname: 'Schmoe', email: 'jschmoe@colgate.edu', role: 'student')
@@ -19,23 +32,44 @@ Tag.create!(name: "C", description: "C is a programming language that allows for
 Tag.create!(name: "R", description: "R is a programming language primarily used for statistical purposes")
 Tag.create!(name: "Javascript", description: "Javascript is a language used for webpage user interaction purposes and other complicated website interface code")
 Tag.create!(name: "Git", description: "Git is a method for teams of programmers to work with branches, version control, and working apart")
+@user3=User.create!(username: 'admin', password: 'password', firstname: 'admin', lastname: 'admin', email: 'admin@colgate.edu', role: 'admin')
+@user4=User.create!(username: 'jschmoe', password: 'password', firstname: 'Joe', lastname: 'Schmoe', email: 'jschmoe@colgate.edu', role: 'student')
+@user_cred4 = UserCred.create!(user_id: @user4.id, name: "Joe Schmoe", school: "Real School", details: "I am definitely a professor...", approved: false)
+@user5=User.create!(username: 'jdoe', password: 'password', firstname: 'John', lastname: 'Doe', email: 'jdoe@colgate.edu', role: 'student')
+@user6 = User.create!(username: 'janed', password: 'password', firstname: 'Jane', lastname: 'Doe', email: 'janed@colgate.edu', role: 'student')
+
+  
+Tag.create!(name: "", description: "Empty Tag")
+@python_tag=Tag.create!(name: "Python", description: "Python is a programming language that allows for many different programming practices including Object Oriented Programming and many machine learning packages ")
+Tag.create!(name: "Java", description: "Java is an programming languages with static typing to create code that can be ran ony any platform once completed")
+Tag.create!(name: "C", description: "C is a programming language that allows for specific interactions with the low level processes of programming")
+@ruby_tag=Tag.create!(name: "Ruby", description: "Ruby is a programming language designed to reduce confusion by following consistent procedures and giving freedom to programmers")
+@rails_tag=Tag.create!(name: "Ruby on Rails", description: "Ruby on Rails is a series of packages for Ruby used for Software Engineering and Agile Programming")
+@sql_tag=Tag.create!(name: "SQL", description: "SQL is a language used to analyze and work with databases")
+Tag.create!(name: "R", description: "R is a programming language primarily used for statistical purposes")
+Tag.create!(name: "Javascript", description: "Javascript is a language used for webpage user interaction purposes and other complicated website interface code")
+Tag.create!(name: "Git", description: "Git is a method for teams of programmers to work with branchs, version control, and working apart")
 
 Tag.create!(name: "Design Principles", description: "Questions that are asking about the why behind design decisions")
 Tag.create!(name: "Compilation Error", description: "Questions asking about errors with programs compiling")
 Tag.create!(name: "Semantic Error", description: "Questions asking about programs producing unexpected output")
 Tag.create!(name: "Runtime Error", description: "Questions asking about programs producing errors at runtime")
 
-Tag.create!(name: "Instructor Response", description: "Posts where an instructor has responded")
+@instr_tag=Tag.create!(name: "Instructor Response", description: "Posts where an instructor has responded")
 
-# Posts
-@post1 = Post.create!(
-  title: "Issue running rails db:seed",
-  text: "I am running into this issue when I try and run rails db:seed bin/rails aborted! ActiveRecord::RecordInvalid: Validation failed: Email has already been taken (ActiveRecord::RecordInvalid)",
-  user: @user4,
-  created_at: Time.new(2024, 12, 6, 14, 30)
-)
-@post1.tags << @rails_tag  # Add the tag to the post through the association
+
+@post1=Post.create!(
+    title: "Issue running rails db:seed",
+    text: "I am running into this issue when I try and run rails db:seed bin/rails aborted! ActiveRecord::RecordInvalid: Validation failed: Email has already been taken (ActiveRecord::RecordInvalid)",
+    user: @user4,
+    created_at: Time.new(2024, 12, 6, 14, 30))
+@post1.tags <<  @rails_tag
+
+  
+@post1.tags << @instr_tag
 @post1.save!
+
+
 
 @post2 = Post.create!(
   title: "How to debug undefined method error in Ruby",
@@ -44,6 +78,8 @@ Tag.create!(name: "Instructor Response", description: "Posts where an instructor
   created_at: Time.new(2024, 12, 5, 10, 15)
 )
 @post2.tags << @ruby_tag  # Add the tag to the post through the association
+@post2.tags << @instr_tag
+
 @post2.save!
 
 @post3 = Post.create!(
@@ -53,6 +89,8 @@ Tag.create!(name: "Instructor Response", description: "Posts where an instructor
   created_at: Time.new(2024, 12, 4, 9, 30)
 )
 @post3.tags << @python_tag  # Add the tag to the post through the association
+@post3.tags << @instr_tag
+
 @post3.save!
 
 @post4 = Post.create!(
