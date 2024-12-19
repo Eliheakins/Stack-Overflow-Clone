@@ -1,7 +1,4 @@
-# Users
-@user1 = User.create!(username: 'user', password: 'password', firstname: 'User', lastname: 'Lastname', email: 'user@colgate.edu', role: 'student')
-@user2 = User.create!(username: 'prof', password: 'password', firstname: 'professor', lastname: 'Schmoe', email: 'prof@colgate.edu', role: 'instructor')
-@user_cred2 = UserCred.create!(user_id: @user2.id, approved: true)
+
   # This file should ensure the existence of records required to run the application in every environment (production,
   # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
   # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
@@ -16,9 +13,10 @@
 @user2=User.create!(username: 'prof', password: 'password', firstname: 'professor', lastname: 'Schmoe', email: 'prof@colgate.edu', role: 'instructor')
 @user_cred2 = UserCred.create!(user_id: @user2.id, school: "Stack Overflow University", details: "I have been a computer science professor at Stack Overflow University for 5 years", approved: true)
 
-@user3 = User.create!(username: 'admin', password: 'password', firstname: 'admin', lastname: 'admin', email: 'admin@colgate.edu', role: 'admin')
-@user4 = User.create!(username: 'jschmoe', password: 'password', firstname: 'Joe', lastname: 'Schmoe', email: 'jschmoe@colgate.edu', role: 'student')
-@user5 = User.create!(username: 'jdoe', password: 'password', firstname: 'John', lastname: 'Doe', email: 'jdoe@colgate.edu', role: 'student')
+@user3=User.create!(username: 'admin', password: 'password', firstname: 'admin', lastname: 'admin', email: 'admin@colgate.edu', role: 'admin')
+@user4=User.create!(username: 'jschmoe', password: 'password', firstname: 'Joe', lastname: 'Schmoe', email: 'jschmoe@colgate.edu', role: 'student')
+@user_cred4 = UserCred.create!(user_id: @user4.id, name: "Joe Schmoe", school: "Real School", details: "I am definitely a professor...", approved: false)
+@user5=User.create!(username: 'jdoe', password: 'password', firstname: 'John', lastname: 'Doe', email: 'jdoe@colgate.edu', role: 'student')
 @user6 = User.create!(username: 'janed', password: 'password', firstname: 'Jane', lastname: 'Doe', email: 'janed@colgate.edu', role: 'student')
 
 # Tags
@@ -32,11 +30,7 @@ Tag.create!(name: "C", description: "C is a programming language that allows for
 Tag.create!(name: "R", description: "R is a programming language primarily used for statistical purposes")
 Tag.create!(name: "Javascript", description: "Javascript is a language used for webpage user interaction purposes and other complicated website interface code")
 Tag.create!(name: "Git", description: "Git is a method for teams of programmers to work with branches, version control, and working apart")
-@user3=User.create!(username: 'admin', password: 'password', firstname: 'admin', lastname: 'admin', email: 'admin@colgate.edu', role: 'admin')
-@user4=User.create!(username: 'jschmoe', password: 'password', firstname: 'Joe', lastname: 'Schmoe', email: 'jschmoe@colgate.edu', role: 'student')
-@user_cred4 = UserCred.create!(user_id: @user4.id, name: "Joe Schmoe", school: "Real School", details: "I am definitely a professor...", approved: false)
-@user5=User.create!(username: 'jdoe', password: 'password', firstname: 'John', lastname: 'Doe', email: 'jdoe@colgate.edu', role: 'student')
-@user6 = User.create!(username: 'janed', password: 'password', firstname: 'Jane', lastname: 'Doe', email: 'janed@colgate.edu', role: 'student')
+
 
   
 Tag.create!(name: "", description: "Empty Tag")
