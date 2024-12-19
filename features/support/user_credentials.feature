@@ -2,21 +2,14 @@ Feature: User Credentials (Requesting and Use)
 
     Background:
 
-    Given these tags exist:
-        | name | description |
-        | Instructor Response | Posts with responses by instructors |
 
     Given these users exist:
         | username | password | email |
-        | user1 | password |  user1@email |
+        | user2 | password |  user2@email |
 
     Given these tags exist:
         | name | description |
         | Instructor Response | Posts with responses by instructors |
-
-    Given these users exist:
-        | username | password | email |
-        | user1 | password |  user1@email |
 
     And I am logged in
 
