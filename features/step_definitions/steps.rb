@@ -20,6 +20,20 @@ Given('these users exist:') do |table|
   end
 end
 
+Given('these posts exist:') do |table|
+  # table is a Cucumber::MultilineArgument::DataTable
+  table.hashes.each do |h|
+    Post.create!(h)
+  end
+end
+
+Given('these users exist:') do |table|
+  # table is a Cucumber::MultilineArgument::DataTable
+  table.hashes.each do |h|
+    User.create!(h)
+  end
+end
+
 Given('I am logged in') do
     User.create!(username: 'admin', password: 'password', firstname: 'admin', lastname: 'admin', email: 'admin@colgate.edu', role: 'admin')
     visit "/users/sign_in"
@@ -86,7 +100,15 @@ end
 
 
 
+
 Given('I request certification') do
+  visit user_path(User.find_by(username: 'admin'))
+  click_on "Send Credentials"
+  click_on "Submit Credentials"
+end
+
+Given('I am on my profile') do
+  visit user_path(User.find_by(username: 'admin'))
   visit user_path(User.find_by(username: 'admin'))
   click_on "Send Credentials"
   click_on "Submit Credentials"
@@ -100,13 +122,20 @@ Given('certification is approved by a moderator') do
   visit user_path(User.find_by(username: 'admin'))
   click_on "Approve Credentials"
   click_on "Approve"
+  visit user_path(User.find_by(username: 'admin'))
+  click_on "Approve Credentials"
+  click_on "Approve"
 end
 
 Given('I am on post {string}') do |string|
   visit post_path(Post.find_by(title: string))
+  visit post_path(Post.find_by(title: string))
 end
 
 Given('I leave a reply') do
+  click_on "New reply"
+  fill_in "Text", with: "test"
+  click_on "Submit Reply"
   click_on "New reply"
   fill_in "Text", with: "test"
   click_on "Submit Reply"
